@@ -1,0 +1,3044 @@
+Unable to import CPU and/or CUDA bit-wise shift kernels
+Called With Args:
+     activation_bits = [16, 16]
+     batch_size = 8
+     ckpt_path = ../datasets/pretrained_models/base_p16_224_backbone.pth
+     crop_pct = 0.9
+     data_path = ../datasets/CIFAR100/
+     deepshift = False
+     depth = 12
+     dim = 768
+     dropout = 0.1
+     emb_dropout = 0.1
+     evaluate = False
+     gpu = 0
+     heads = 12
+     input_size = 224
+     interpolation = bicubic
+     log_interval = 10
+     lr = 0.001
+     max_epoch = 15
+     mlp_dim = 3072
+     model = 
+     no_cuda = False
+     nohup = 20
+     num_classes = 10
+     optimizer = radam
+     patch_size = 16
+     pretrained = False
+     qkv_bias = True
+     resume = 
+     rounding = deterministic
+     save_path = ../save/pretrain_cifar100
+     save_per = 2
+     seed = 1005
+     shift_depth = 3
+     shift_type = PS
+     type = linear
+     val_begin = True
+     val_per = 5
+     weight_bits = 5
+     weights = 
+     workers = 4
+
+Set GPU: 0
+
+Building ViT Model:
+VisionTransformer(
+  (patch_embed): PatchEmbed(
+    (proj): Conv2d(3, 768, kernel_size=(16, 16), stride=(16, 16))
+    (norm): Identity()
+  )
+  (pos_drop): Dropout(p=0.0, inplace=False)
+  (blocks): Sequential(
+    (0): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (1): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (2): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (3): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (4): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (5): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (6): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (7): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (8): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (9): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (10): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (11): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+  )
+  (norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+  (pre_logits): Identity()
+  (head): Linear(in_features=768, out_features=100, bias=True)
+)
+<bound method Module.state_dict of VisionTransformer(
+  (patch_embed): PatchEmbed(
+    (proj): Conv2d(3, 768, kernel_size=(16, 16), stride=(16, 16))
+    (norm): Identity()
+  )
+  (pos_drop): Dropout(p=0.0, inplace=False)
+  (blocks): Sequential(
+    (0): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (1): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (2): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (3): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (4): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (5): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (6): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (7): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (8): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (9): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (10): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+    (11): Block(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): Attention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU()
+        (drop1): Dropout(p=0.0, inplace=False)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop2): Dropout(p=0.0, inplace=False)
+      )
+    )
+  )
+  (norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+  (pre_logits): Identity()
+  (head): Linear(in_features=768, out_features=100, bias=True)
+)>
+[1;31mWARNING: Saving Path '../save/pretrain_cifar100' Already Exist. May Cover Saved Checkpoints[0m
+[finished:40] Acc: 0.0%
+[finished:80] Acc: 2.5%
+[finished:120] Acc: 1.6666666666666667%
+[finished:160] Acc: 1.25%
+[finished:200] Acc: 1.0%
+[finished:240] Acc: 1.25%
+[finished:280] Acc: 1.0714285714285714%
+[finished:320] Acc: 0.9375%
+[finished:360] Acc: 0.8333333333333334%
+[finished:400] Acc: 1.0%
+[finished:440] Acc: 0.9090909090909091%
+[finished:480] Acc: 1.0416666666666665%
+[finished:520] Acc: 0.9615384615384616%
+[finished:560] Acc: 0.8928571428571428%
+[finished:600] Acc: 0.8333333333333334%
+[finished:640] Acc: 0.78125%
+[finished:680] Acc: 0.7352941176470588%
+[finished:720] Acc: 0.6944444444444444%
+[finished:760] Acc: 0.6578947368421052%
+[finished:800] Acc: 0.625%
+[finished:840] Acc: 0.7142857142857143%
+[finished:880] Acc: 0.6818181818181818%
+[finished:920] Acc: 0.6521739130434783%
+[finished:960] Acc: 0.625%
+[finished:1000] Acc: 0.8%
+[finished:1040] Acc: 1.0576923076923077%
+[finished:1080] Acc: 1.0185185185185186%
+[finished:1120] Acc: 1.0714285714285714%
+[finished:1160] Acc: 1.0344827586206897%
+[finished:1200] Acc: 1.0%
+[finished:1240] Acc: 1.0483870967741937%
+[finished:1280] Acc: 1.015625%
+[finished:1320] Acc: 0.9848484848484848%
+[finished:1360] Acc: 0.9558823529411765%
+[finished:1400] Acc: 0.9285714285714286%
+[finished:1440] Acc: 0.9027777777777777%
+[finished:1480] Acc: 0.8783783783783784%
+[finished:1520] Acc: 0.855263157894737%
+[finished:1560] Acc: 0.8333333333333334%
+[finished:1600] Acc: 0.8125%
+[finished:1640] Acc: 0.853658536585366%
+[finished:1680] Acc: 0.8928571428571428%
+[finished:1720] Acc: 0.9302325581395349%
+[finished:1760] Acc: 0.9090909090909091%
+[finished:1800] Acc: 0.8888888888888888%
+[finished:1840] Acc: 0.9239130434782609%
+[finished:1880] Acc: 0.9042553191489361%
+[finished:1920] Acc: 0.9375%
+[finished:1960] Acc: 0.9183673469387756%
+[finished:2000] Acc: 0.8999999999999999%
+[finished:2040] Acc: 0.8823529411764706%
+[finished:2080] Acc: 0.8653846153846154%
+[finished:2120] Acc: 0.8962264150943396%
+[finished:2160] Acc: 0.8796296296296297%
+[finished:2200] Acc: 0.9090909090909091%
+[finished:2240] Acc: 0.9375%
+[finished:2280] Acc: 0.9649122807017544%
+[finished:2320] Acc: 0.9482758620689655%
+[finished:2360] Acc: 0.9322033898305085%
+[finished:2400] Acc: 0.9583333333333333%
+[finished:2440] Acc: 0.9426229508196722%
+[finished:2480] Acc: 0.967741935483871%
+[finished:2520] Acc: 0.9523809523809524%
+[finished:2560] Acc: 0.9375%
+[finished:2600] Acc: 0.9230769230769231%
+[finished:2640] Acc: 0.9090909090909091%
+[finished:2680] Acc: 0.9328358208955223%
+[finished:2720] Acc: 0.9191176470588236%
+[finished:2760] Acc: 0.9057971014492754%
+[finished:2800] Acc: 0.8928571428571428%
+[finished:2840] Acc: 0.9154929577464789%
+[finished:2880] Acc: 0.9375%
+[finished:2920] Acc: 0.9589041095890412%
+[finished:2960] Acc: 0.945945945945946%
+[finished:3000] Acc: 0.9666666666666667%
+[finished:3040] Acc: 0.9539473684210527%
+[finished:3080] Acc: 0.9415584415584415%
+[finished:3120] Acc: 0.9294871794871795%
+[finished:3160] Acc: 0.9177215189873418%
+[finished:3200] Acc: 0.9062499999999999%
+[finished:3240] Acc: 0.9259259259259258%
+[finished:3280] Acc: 0.9146341463414633%
+[finished:3320] Acc: 0.9337349397590362%
+[finished:3360] Acc: 0.9226190476190477%
+[finished:3400] Acc: 0.9117647058823529%
+[finished:3440] Acc: 0.9011627906976745%
+[finished:3480] Acc: 0.8908045977011494%
+[finished:3520] Acc: 0.8806818181818181%
+[finished:3560] Acc: 0.8707865168539325%
+[finished:3600] Acc: 0.8611111111111112%
+[finished:3640] Acc: 0.8516483516483516%
+[finished:3680] Acc: 0.842391304347826%
+[finished:3720] Acc: 0.8333333333333334%
+[finished:3760] Acc: 0.8244680851063829%
+[finished:3800] Acc: 0.8157894736842105%
+[finished:3840] Acc: 0.8072916666666667%
+[finished:3880] Acc: 0.7989690721649484%
+[finished:3920] Acc: 0.7908163265306122%
+[finished:3960] Acc: 0.7828282828282829%
+[finished:4000] Acc: 0.775%
+[finished:4040] Acc: 0.7673267326732673%
+[finished:4080] Acc: 0.7843137254901961%
+[finished:4120] Acc: 0.7766990291262136%
+[finished:4160] Acc: 0.7692307692307693%
+[finished:4200] Acc: 0.7857142857142858%
+[finished:4240] Acc: 0.8254716981132075%
+[finished:4280] Acc: 0.8177570093457943%
+[finished:4320] Acc: 0.8333333333333334%
+[finished:4360] Acc: 0.8256880733944955%
+[finished:4400] Acc: 0.8181818181818182%
+[finished:4440] Acc: 0.8108108108108109%
+[finished:4480] Acc: 0.8035714285714285%
+[finished:4520] Acc: 0.7964601769911505%
+[finished:4560] Acc: 0.7894736842105263%
+[finished:4600] Acc: 0.782608695652174%
+[finished:4640] Acc: 0.7758620689655172%
+[finished:4680] Acc: 0.7905982905982906%
+[finished:4720] Acc: 0.8050847457627118%
+[finished:4760] Acc: 0.7983193277310924%
+[finished:4800] Acc: 0.7916666666666667%
+[finished:4840] Acc: 0.7851239669421488%
+[finished:4880] Acc: 0.778688524590164%
+[finished:4920] Acc: 0.7723577235772358%
+[finished:4960] Acc: 0.7661290322580645%
+[finished:5000] Acc: 0.7799999999999999%
+[finished:5040] Acc: 0.7738095238095238%
+[finished:5080] Acc: 0.7677165354330708%
+[finished:5120] Acc: 0.76171875%
+[finished:5160] Acc: 0.7558139534883721%
+[finished:5200] Acc: 0.75%
+[finished:5240] Acc: 0.7442748091603053%
+[finished:5280] Acc: 0.7386363636363636%
+[finished:5320] Acc: 0.7330827067669173%
+[finished:5360] Acc: 0.7462686567164178%
+[finished:5400] Acc: 0.7407407407407408%
+[finished:5440] Acc: 0.7352941176470588%
+[finished:5480] Acc: 0.7299270072992701%
+[finished:5520] Acc: 0.7427536231884058%
+[finished:5560] Acc: 0.7374100719424461%
+[finished:5600] Acc: 0.7321428571428572%
+[finished:5640] Acc: 0.7269503546099291%
+[finished:5680] Acc: 0.721830985915493%
+[finished:5720] Acc: 0.7167832167832168%
+[finished:5760] Acc: 0.7118055555555556%
+[finished:5800] Acc: 0.7068965517241379%
+[finished:5840] Acc: 0.7191780821917808%
+[finished:5880] Acc: 0.7142857142857143%
+[finished:5920] Acc: 0.7094594594594595%
+[finished:5960] Acc: 0.7046979865771812%
+[finished:6000] Acc: 0.7000000000000001%
+[finished:6040] Acc: 0.695364238410596%
+[finished:6080] Acc: 0.6907894736842105%
+[finished:6120] Acc: 0.6862745098039216%
+[finished:6160] Acc: 0.6818181818181818%
+[finished:6200] Acc: 0.6774193548387096%
+[finished:6240] Acc: 0.6891025641025641%
+[finished:6280] Acc: 0.7006369426751593%
+[finished:6320] Acc: 0.6962025316455696%
+[finished:6360] Acc: 0.6918238993710693%
+[finished:6400] Acc: 0.6875%
+[finished:6440] Acc: 0.6987577639751553%
+[finished:6480] Acc: 0.6944444444444444%
+[finished:6520] Acc: 0.7055214723926381%
+[finished:6560] Acc: 0.701219512195122%
+[finished:6600] Acc: 0.7121212121212122%
+[finished:6640] Acc: 0.7078313253012049%
+[finished:6680] Acc: 0.7035928143712575%
+[finished:6720] Acc: 0.7142857142857143%
+[finished:6760] Acc: 0.7100591715976331%
+[finished:6800] Acc: 0.7058823529411765%
+[finished:6840] Acc: 0.716374269005848%
+[finished:6880] Acc: 0.7122093023255814%
+[finished:6920] Acc: 0.708092485549133%
+[finished:6960] Acc: 0.7040229885057471%
+[finished:7000] Acc: 0.7000000000000001%
+[finished:7040] Acc: 0.6960227272727273%
+[finished:7080] Acc: 0.7062146892655368%
+[finished:7120] Acc: 0.7303370786516854%
+[finished:7160] Acc: 0.7402234636871509%
+[finished:7200] Acc: 0.736111111111111%
+[finished:7240] Acc: 0.7596685082872928%
+[finished:7280] Acc: 0.7554945054945055%
+[finished:7320] Acc: 0.7513661202185792%
+[finished:7360] Acc: 0.7472826086956522%
+[finished:7400] Acc: 0.7432432432432433%
+[finished:7440] Acc: 0.739247311827957%
+[finished:7480] Acc: 0.7352941176470588%
+[finished:7520] Acc: 0.7313829787234043%
+[finished:7560] Acc: 0.7275132275132274%
+[finished:7600] Acc: 0.7236842105263158%
+[finished:7640] Acc: 0.7329842931937173%
+[finished:7680] Acc: 0.7421875%
+[finished:7720] Acc: 0.7383419689119171%
+[finished:7760] Acc: 0.7345360824742267%
+[finished:7800] Acc: 0.7564102564102564%
+[finished:7840] Acc: 0.7653061224489796%
+[finished:7880] Acc: 0.7614213197969544%
+[finished:7920] Acc: 0.7575757575757576%
+[finished:7960] Acc: 0.7537688442211055%
+[finished:8000] Acc: 0.75%
+[finished:8040] Acc: 0.7462686567164178%
+[finished:8080] Acc: 0.754950495049505%
+[finished:8120] Acc: 0.7512315270935961%
+[finished:8160] Acc: 0.7720588235294118%
+[finished:8200] Acc: 0.7682926829268293%
+[finished:8240] Acc: 0.7645631067961165%
+[finished:8280] Acc: 0.7608695652173914%
+[finished:8320] Acc: 0.7692307692307693%
+[finished:8360] Acc: 0.7655502392344498%
+[finished:8400] Acc: 0.7619047619047619%
+[finished:8440] Acc: 0.7701421800947867%
+[finished:8480] Acc: 0.7665094339622641%
+[finished:8520] Acc: 0.7629107981220657%
+[finished:8560] Acc: 0.7710280373831775%
+[finished:8600] Acc: 0.7674418604651163%
+[finished:8640] Acc: 0.7638888888888888%
+[finished:8680] Acc: 0.7603686635944701%
+[finished:8720] Acc: 0.7568807339449541%
+[finished:8760] Acc: 0.7648401826484018%
+[finished:8800] Acc: 0.7727272727272727%
+[finished:8840] Acc: 0.7692307692307693%
+[finished:8880] Acc: 0.7770270270270271%
+[finished:8920] Acc: 0.773542600896861%
+[finished:8960] Acc: 0.7700892857142858%
+[finished:9000] Acc: 0.7666666666666666%
+[finished:9040] Acc: 0.7632743362831859%
+[finished:9080] Acc: 0.7709251101321586%
+[finished:9120] Acc: 0.7675438596491228%
+[finished:9160] Acc: 0.7751091703056769%
+[finished:9200] Acc: 0.7717391304347826%
+[finished:9240] Acc: 0.7792207792207793%
+[finished:9280] Acc: 0.7758620689655172%
+[finished:9320] Acc: 0.8047210300429184%
+[finished:9360] Acc: 0.8012820512820512%
+[finished:9400] Acc: 0.7978723404255319%
+[finished:9440] Acc: 0.7944915254237288%
+[finished:9480] Acc: 0.7911392405063291%
+[finished:9520] Acc: 0.7878151260504201%
+[finished:9560] Acc: 0.7845188284518828%
+[finished:9600] Acc: 0.78125%
+[finished:9640] Acc: 0.7780082987551867%
+[finished:9680] Acc: 0.7747933884297521%
+[finished:9720] Acc: 0.7818930041152263%
+[finished:9760] Acc: 0.7889344262295083%
+[finished:9800] Acc: 0.7857142857142858%
+[finished:9840] Acc: 0.7825203252032521%
+[finished:9880] Acc: 0.7793522267206479%
+[finished:9920] Acc: 0.7762096774193549%
+[finished:9960] Acc: 0.783132530120482%
+[finished:10000] Acc: 0.7799999999999999%
+Validated on 10000 Images, Accuracy: 0.7799999999999999%
+Validated Accuracy: 0.7799999999999999%
+Epoch1_start: Wed Oct 27 12:04:03 2021
+Epoch1 [20/6250] Loss: 5.397762298583984, Acc: 1.25%
+Epoch1 [40/6250] Loss: 5.116685390472412, Acc: 1.875%
+Epoch1 [60/6250] Loss: 5.021559715270996, Acc: 2.083333333333333%
+Epoch1 [80/6250] Loss: 4.9955620765686035, Acc: 1.7187500000000002%
+Epoch1 [100/6250] Loss: 4.962749004364014, Acc: 1.625%
+Epoch1 [120/6250] Loss: 4.9353413581848145, Acc: 1.4583333333333333%
+Epoch1 [140/6250] Loss: 4.922464370727539, Acc: 1.4285714285714286%
+Epoch1 [160/6250] Loss: 4.900881767272949, Acc: 1.640625%
+Epoch1 [180/6250] Loss: 4.8893890380859375, Acc: 1.5277777777777777%
+Epoch1 [200/6250] Loss: 4.878381252288818, Acc: 1.4375%
+Epoch1 [220/6250] Loss: 4.873998165130615, Acc: 1.4772727272727273%
+Epoch1 [240/6250] Loss: 4.864412784576416, Acc: 1.5625%
+Epoch1 [260/6250] Loss: 4.859130859375, Acc: 1.4423076923076923%
+Epoch1 [280/6250] Loss: 4.847666263580322, Acc: 1.4732142857142856%
+Epoch1 [300/6250] Loss: 4.84175443649292, Acc: 1.4166666666666665%
+Epoch1 [320/6250] Loss: 4.836113452911377, Acc: 1.3671875%
+Epoch1 [340/6250] Loss: 4.8330302238464355, Acc: 1.397058823529412%
+Epoch1 [360/6250] Loss: 4.8287034034729, Acc: 1.4236111111111112%
+Epoch1 [380/6250] Loss: 4.826545715332031, Acc: 1.381578947368421%
+Epoch1 [400/6250] Loss: 4.82721471786499, Acc: 1.3125%
+Epoch1 [420/6250] Loss: 4.826186656951904, Acc: 1.3095238095238095%
+Epoch1 [440/6250] Loss: 4.820392608642578, Acc: 1.4488636363636362%
+Epoch1 [460/6250] Loss: 4.820454120635986, Acc: 1.3858695652173914%
+Epoch1 [480/6250] Loss: 4.817492961883545, Acc: 1.40625%
+Epoch1 [500/6250] Loss: 4.814040184020996, Acc: 1.425%
+Epoch1 [520/6250] Loss: 4.810751914978027, Acc: 1.3942307692307694%
+Epoch1 [540/6250] Loss: 4.809817314147949, Acc: 1.3888888888888888%
+Epoch1 [560/6250] Loss: 4.804227352142334, Acc: 1.3839285714285714%
+Epoch1 [580/6250] Loss: 4.80067777633667, Acc: 1.4439655172413792%
+Epoch1 [600/6250] Loss: 4.7947773933410645, Acc: 1.4791666666666667%
+Epoch1 [620/6250] Loss: 4.790745735168457, Acc: 1.4919354838709677%
+Epoch1 [640/6250] Loss: 4.784862041473389, Acc: 1.484375%
+Epoch1 [660/6250] Loss: 4.780587673187256, Acc: 1.5151515151515151%
+Epoch1 [680/6250] Loss: 4.776700496673584, Acc: 1.525735294117647%
+Epoch1 [700/6250] Loss: 4.774540901184082, Acc: 1.5714285714285716%
+Epoch1 [720/6250] Loss: 4.769665241241455, Acc: 1.6145833333333335%
+Epoch1 [740/6250] Loss: 4.767330646514893, Acc: 1.587837837837838%
+Epoch1 [760/6250] Loss: 4.763162136077881, Acc: 1.6282894736842104%
+Epoch1 [780/6250] Loss: 4.756576061248779, Acc: 1.6185897435897438%
+Epoch1 [800/6250] Loss: 4.7532057762146, Acc: 1.609375%
+Epoch1 [820/6250] Loss: 4.750296115875244, Acc: 1.6310975609756098%
+Epoch1 [840/6250] Loss: 4.746561527252197, Acc: 1.636904761904762%
+Epoch1 [860/6250] Loss: 4.742524147033691, Acc: 1.627906976744186%
+Epoch1 [880/6250] Loss: 4.735898494720459, Acc: 1.690340909090909%
+Epoch1 [900/6250] Loss: 4.7295026779174805, Acc: 1.7083333333333333%
+Epoch1 [920/6250] Loss: 4.7247467041015625, Acc: 1.7255434782608696%
+Epoch1 [940/6250] Loss: 4.7191314697265625, Acc: 1.7420212765957448%
+Epoch1 [960/6250] Loss: 4.715974807739258, Acc: 1.7578125%
+Epoch1 [980/6250] Loss: 4.712891101837158, Acc: 1.7474489795918369%
+Epoch1 [1000/6250] Loss: 4.708245277404785, Acc: 1.8124999999999998%
+Epoch1 [1020/6250] Loss: 4.703338623046875, Acc: 1.7892156862745097%
+Epoch1 [1040/6250] Loss: 4.698429107666016, Acc: 1.8028846153846152%
+Epoch1 [1060/6250] Loss: 4.691746234893799, Acc: 1.8396226415094339%
+Epoch1 [1080/6250] Loss: 4.68710470199585, Acc: 1.863425925925926%
+Epoch1 [1100/6250] Loss: 4.682223796844482, Acc: 1.8977272727272727%
+Epoch1 [1120/6250] Loss: 4.679766654968262, Acc: 1.8973214285714284%
+Epoch1 [1140/6250] Loss: 4.6725053787231445, Acc: 1.9736842105263157%
+Epoch1 [1160/6250] Loss: 4.669856548309326, Acc: 1.9612068965517242%
+Epoch1 [1180/6250] Loss: 4.661379337310791, Acc: 2.0338983050847457%
+Epoch1 [1200/6250] Loss: 4.655959606170654, Acc: 2.052083333333333%
+Epoch1 [1220/6250] Loss: 4.649384021759033, Acc: 2.1209016393442623%
+Epoch1 [1240/6250] Loss: 4.645567893981934, Acc: 2.1370967741935485%
+Epoch1 [1260/6250] Loss: 4.643082141876221, Acc: 2.132936507936508%
+Epoch1 [1280/6250] Loss: 4.640217304229736, Acc: 2.12890625%
+Epoch1 [1300/6250] Loss: 4.637568950653076, Acc: 2.1346153846153846%
+Epoch1 [1320/6250] Loss: 4.631197452545166, Acc: 2.178030303030303%
+Epoch1 [1340/6250] Loss: 4.626809120178223, Acc: 2.201492537313433%
+Epoch1 [1360/6250] Loss: 4.6229448318481445, Acc: 2.215073529411765%
+Epoch1 [1380/6250] Loss: 4.6187639236450195, Acc: 2.2192028985507246%
+Epoch1 [1400/6250] Loss: 4.61268424987793, Acc: 2.2589285714285716%
+Epoch1 [1420/6250] Loss: 4.6070356369018555, Acc: 2.306338028169014%
+Epoch1 [1440/6250] Loss: 4.603557586669922, Acc: 2.3177083333333335%
+Epoch1 [1460/6250] Loss: 4.5990986824035645, Acc: 2.337328767123288%
+Epoch1 [1480/6250] Loss: 4.596080780029297, Acc: 2.364864864864865%
+Epoch1 [1500/6250] Loss: 4.5937676429748535, Acc: 2.3666666666666667%
+Epoch1 [1520/6250] Loss: 4.5905046463012695, Acc: 2.393092105263158%
+Epoch1 [1540/6250] Loss: 4.585959434509277, Acc: 2.418831168831169%
+Epoch1 [1560/6250] Loss: 4.583181381225586, Acc: 2.4439102564102564%
+Epoch1 [1580/6250] Loss: 4.577967643737793, Acc: 2.492088607594937%
+Epoch1 [1600/6250] Loss: 4.573932647705078, Acc: 2.546875%
+Epoch1 [1620/6250] Loss: 4.574119567871094, Acc: 2.5462962962962963%
+Epoch1 [1640/6250] Loss: 4.573058605194092, Acc: 2.538109756097561%
+Epoch1 [1660/6250] Loss: 4.571392059326172, Acc: 2.522590361445783%
+Epoch1 [1680/6250] Loss: 4.569828510284424, Acc: 2.5297619047619047%
+Epoch1 [1700/6250] Loss: 4.568253517150879, Acc: 2.5220588235294117%
+Epoch1 [1720/6250] Loss: 4.5661516189575195, Acc: 2.5363372093023253%
+Epoch1 [1740/6250] Loss: 4.563883304595947, Acc: 2.550287356321839%
+Epoch1 [1760/6250] Loss: 4.562027931213379, Acc: 2.578125%
+Epoch1 [1780/6250] Loss: 4.558691024780273, Acc: 2.584269662921348%
+Epoch1 [1800/6250] Loss: 4.555872917175293, Acc: 2.604166666666667%
+Epoch1 [1820/6250] Loss: 4.5534820556640625, Acc: 2.6304945054945055%
+Epoch1 [1840/6250] Loss: 4.550655841827393, Acc: 2.6426630434782608%
+Epoch1 [1860/6250] Loss: 4.547423362731934, Acc: 2.668010752688172%
+Epoch1 [1880/6250] Loss: 4.543605327606201, Acc: 2.69281914893617%
+Epoch1 [1900/6250] Loss: 4.542667865753174, Acc: 2.7039473684210527%
+Epoch1 [1920/6250] Loss: 4.540295600891113, Acc: 2.734375%
+Epoch1 [1940/6250] Loss: 4.538074016571045, Acc: 2.731958762886598%
+Epoch1 [1960/6250] Loss: 4.535459995269775, Acc: 2.748724489795918%
+Epoch1 [1980/6250] Loss: 4.534430503845215, Acc: 2.727272727272727%
+Epoch1 [2000/6250] Loss: 4.531505107879639, Acc: 2.76875%
+Epoch1 [2020/6250] Loss: 4.5304718017578125, Acc: 2.7908415841584158%
+Epoch1 [2040/6250] Loss: 4.529430389404297, Acc: 2.7879901960784315%
+Epoch1 [2060/6250] Loss: 4.527743816375732, Acc: 2.7912621359223304%
+Epoch1 [2080/6250] Loss: 4.525679111480713, Acc: 2.8064903846153846%
+Epoch1 [2100/6250] Loss: 4.522817611694336, Acc: 2.8035714285714284%
+Epoch1 [2120/6250] Loss: 4.519040584564209, Acc: 2.8242924528301887%
+Epoch1 [2140/6250] Loss: 4.51626443862915, Acc: 2.8446261682242993%
+Epoch1 [2160/6250] Loss: 4.513372898101807, Acc: 2.8703703703703702%
+Epoch1 [2180/6250] Loss: 4.5103325843811035, Acc: 2.8841743119266057%
+Epoch1 [2200/6250] Loss: 4.506597518920898, Acc: 2.9261363636363638%
+Epoch1 [2220/6250] Loss: 4.504462242126465, Acc: 2.94481981981982%
+Epoch1 [2240/6250] Loss: 4.500672340393066, Acc: 2.963169642857143%
+Epoch1 [2260/6250] Loss: 4.498368740081787, Acc: 3.0033185840707963%
+Epoch1 [2280/6250] Loss: 4.495732307434082, Acc: 3.0427631578947367%
+Epoch1 [2300/6250] Loss: 4.493124008178711, Acc: 3.092391304347826%
+Epoch1 [2320/6250] Loss: 4.490820407867432, Acc: 3.1519396551724137%
+Epoch1 [2340/6250] Loss: 4.4876322746276855, Acc: 3.173076923076923%
+Epoch1 [2360/6250] Loss: 4.48457670211792, Acc: 3.1779661016949152%
+Epoch1 [2380/6250] Loss: 4.48179292678833, Acc: 3.2037815126050417%
+Epoch1 [2400/6250] Loss: 4.479610919952393, Acc: 3.2239583333333335%
+Epoch1 [2420/6250] Loss: 4.47786808013916, Acc: 3.2283057851239665%
+Epoch1 [2440/6250] Loss: 4.475699424743652, Acc: 3.242827868852459%
+Epoch1 [2460/6250] Loss: 4.473552703857422, Acc: 3.2520325203252036%
+Epoch1 [2480/6250] Loss: 4.472349643707275, Acc: 3.240927419354839%
+Epoch1 [2500/6250] Loss: 4.471330642700195, Acc: 3.225%
+Epoch1 [2520/6250] Loss: 4.468801021575928, Acc: 3.2539682539682544%
+Epoch1 [2540/6250] Loss: 4.466619968414307, Acc: 3.2529527559055116%
+Epoch1 [2560/6250] Loss: 4.46375036239624, Acc: 3.2666015625000004%
+Epoch1 [2580/6250] Loss: 4.461234092712402, Acc: 3.2751937984496124%
+Epoch1 [2600/6250] Loss: 4.459542751312256, Acc: 3.283653846153846%
+Epoch1 [2620/6250] Loss: 4.4568023681640625, Acc: 3.3396946564885495%
+Epoch1 [2640/6250] Loss: 4.454510688781738, Acc: 3.361742424242424%
+Epoch1 [2660/6250] Loss: 4.4524335861206055, Acc: 3.3975563909774436%
+Epoch1 [2680/6250] Loss: 4.451561450958252, Acc: 3.4141791044776117%
+Epoch1 [2700/6250] Loss: 4.450271129608154, Acc: 3.4212962962962967%
+Epoch1 [2720/6250] Loss: 4.448266506195068, Acc: 3.4512867647058827%
+Epoch1 [2740/6250] Loss: 4.446911334991455, Acc: 3.471715328467153%
+Epoch1 [2760/6250] Loss: 4.445449352264404, Acc: 3.4918478260869565%
+Epoch1 [2780/6250] Loss: 4.443347930908203, Acc: 3.4937050359712227%
+Epoch1 [2800/6250] Loss: 4.440810203552246, Acc: 3.508928571428571%
+Epoch1 [2820/6250] Loss: 4.439212322235107, Acc: 3.506205673758865%
+Epoch1 [2840/6250] Loss: 4.437039852142334, Acc: 3.516725352112676%
+Epoch1 [2860/6250] Loss: 4.4350666999816895, Acc: 3.5270979020979016%
+Epoch1 [2880/6250] Loss: 4.432309150695801, Acc: 3.5503472222222223%
+Epoch1 [2900/6250] Loss: 4.430156230926514, Acc: 3.5732758620689657%
+Epoch1 [2920/6250] Loss: 4.42882776260376, Acc: 3.578767123287671%
+Epoch1 [2940/6250] Loss: 4.42665958404541, Acc: 3.6054421768707483%
+Epoch1 [2960/6250] Loss: 4.425051689147949, Acc: 3.619087837837838%
+Epoch1 [2980/6250] Loss: 4.423251152038574, Acc: 3.6283557046979866%
+Epoch1 [3000/6250] Loss: 4.420834064483643, Acc: 3.6458333333333335%
+Epoch1 [3020/6250] Loss: 4.418569087982178, Acc: 3.6589403973509933%
+Epoch1 [3040/6250] Loss: 4.416793346405029, Acc: 3.671875%
+Epoch1 [3060/6250] Loss: 4.41540002822876, Acc: 3.6846405228758172%
+Epoch1 [3080/6250] Loss: 4.413624286651611, Acc: 3.7094155844155847%
+Epoch1 [3100/6250] Loss: 4.411505699157715, Acc: 3.7298387096774195%
+Epoch1 [3120/6250] Loss: 4.409750461578369, Acc: 3.75400641025641%
+Epoch1 [3140/6250] Loss: 4.408486366271973, Acc: 3.753980891719745%
+Epoch1 [3160/6250] Loss: 4.405950546264648, Acc: 3.7737341772151898%
+Epoch1 [3180/6250] Loss: 4.403317451477051, Acc: 3.7971698113207544%
+Epoch1 [3200/6250] Loss: 4.400452613830566, Acc: 3.84375%
+Epoch1 [3220/6250] Loss: 4.3974103927612305, Acc: 3.889751552795031%
+Epoch1 [3240/6250] Loss: 4.395069122314453, Acc: 3.9120370370370368%
+Epoch1 [3260/6250] Loss: 4.393396854400635, Acc: 3.918711656441718%
+Epoch1 [3280/6250] Loss: 4.391690731048584, Acc: 3.9214939024390243%
+Epoch1 [3300/6250] Loss: 4.390284538269043, Acc: 3.928030303030303%
+Epoch1 [3320/6250] Loss: 4.386955261230469, Acc: 3.9721385542168677%
+Epoch1 [3340/6250] Loss: 4.384921073913574, Acc: 4.000748502994012%
+Epoch1 [3360/6250] Loss: 4.38264274597168, Acc: 4.0252976190476195%
+Epoch1 [3380/6250] Loss: 4.378897666931152, Acc: 4.071745562130177%
+Epoch1 [3400/6250] Loss: 4.376509666442871, Acc: 4.099264705882353%
+Epoch1 [3420/6250] Loss: 4.373835563659668, Acc: 4.12280701754386%
+Epoch1 [3440/6250] Loss: 4.371558666229248, Acc: 4.138808139534884%
+Epoch1 [3460/6250] Loss: 4.369438171386719, Acc: 4.154624277456647%
+Epoch1 [3480/6250] Loss: 4.366995334625244, Acc: 4.20617816091954%
+Epoch1 [3500/6250] Loss: 4.364955425262451, Acc: 4.2214285714285715%
+Epoch1 [3520/6250] Loss: 4.363386154174805, Acc: 4.236505681818182%
+Epoch1 [3540/6250] Loss: 4.361660957336426, Acc: 4.262005649717514%
+Epoch1 [3560/6250] Loss: 4.360121726989746, Acc: 4.290730337078651%
+Epoch1 [3580/6250] Loss: 4.358802795410156, Acc: 4.294692737430168%
+Epoch1 [3600/6250] Loss: 4.357532501220703, Acc: 4.309027777777778%
+Epoch1 [3620/6250] Loss: 4.355135440826416, Acc: 4.316298342541437%
+Epoch1 [3640/6250] Loss: 4.353957653045654, Acc: 4.323489010989011%
+Epoch1 [3660/6250] Loss: 4.353019714355469, Acc: 4.354508196721311%
+Epoch1 [3680/6250] Loss: 4.3521599769592285, Acc: 4.388586956521739%
+Epoch1 [3700/6250] Loss: 4.350229263305664, Acc: 4.398648648648649%
+Epoch1 [3720/6250] Loss: 4.347917079925537, Acc: 4.425403225806451%
+Epoch1 [3740/6250] Loss: 4.345271110534668, Acc: 4.461898395721925%
+Epoch1 [3760/6250] Loss: 4.344811916351318, Acc: 4.468085106382979%
+Epoch1 [3780/6250] Loss: 4.342294216156006, Acc: 4.484126984126984%
+Epoch1 [3800/6250] Loss: 4.3409342765808105, Acc: 4.5%
+Epoch1 [3820/6250] Loss: 4.338506698608398, Acc: 4.535340314136126%
+Epoch1 [3840/6250] Loss: 4.337772846221924, Acc: 4.53125%
+Epoch1 [3860/6250] Loss: 4.335905075073242, Acc: 4.536917098445596%
+Epoch1 [3880/6250] Loss: 4.334123611450195, Acc: 4.552190721649485%
+Epoch1 [3900/6250] Loss: 4.332326889038086, Acc: 4.573717948717949%
+Epoch1 [3920/6250] Loss: 4.3308258056640625, Acc: 4.579081632653061%
+Epoch1 [3940/6250] Loss: 4.329183101654053, Acc: 4.603426395939087%
+Epoch1 [3960/6250] Loss: 4.3267903327941895, Acc: 4.633838383838384%
+Epoch1 [3980/6250] Loss: 4.324587821960449, Acc: 4.648241206030151%
+Epoch1 [4000/6250] Loss: 4.322226047515869, Acc: 4.671875%
+Epoch1 [4020/6250] Loss: 4.32124137878418, Acc: 4.68594527363184%
+Epoch1 [4040/6250] Loss: 4.319331169128418, Acc: 4.702970297029703%
+Epoch1 [4060/6250] Loss: 4.31763219833374, Acc: 4.732142857142857%
+Epoch1 [4080/6250] Loss: 4.316093444824219, Acc: 4.764093137254902%
+Epoch1 [4100/6250] Loss: 4.3148088455200195, Acc: 4.7682926829268295%
+Epoch1 [4120/6250] Loss: 4.313229560852051, Acc: 4.766383495145631%
+Epoch1 [4140/6250] Loss: 4.31270694732666, Acc: 4.761473429951691%
+Epoch1 [4160/6250] Loss: 4.310819625854492, Acc: 4.780649038461538%
+Epoch1 [4180/6250] Loss: 4.308859825134277, Acc: 4.793660287081339%
+Epoch1 [4200/6250] Loss: 4.306930065155029, Acc: 4.8273809523809526%
+Epoch1 [4220/6250] Loss: 4.305324554443359, Acc: 4.828199052132701%
+Epoch1 [4240/6250] Loss: 4.304246425628662, Acc: 4.834905660377359%
+Epoch1 [4260/6250] Loss: 4.302588939666748, Acc: 4.865023474178404%
+Epoch1 [4280/6250] Loss: 4.300846576690674, Acc: 4.874415887850468%
+Epoch1 [4300/6250] Loss: 4.2991814613342285, Acc: 4.901162790697675%
+Epoch1 [4320/6250] Loss: 4.297813415527344, Acc: 4.904513888888888%
+Epoch1 [4340/6250] Loss: 4.296186447143555, Acc: 4.91647465437788%
+Epoch1 [4360/6250] Loss: 4.294435977935791, Acc: 4.934059633027523%
+Epoch1 [4380/6250] Loss: 4.2938923835754395, Acc: 4.937214611872146%
+Epoch1 [4400/6250] Loss: 4.2930216789245605, Acc: 4.928977272727273%
+Epoch1 [4420/6250] Loss: 4.2920403480529785, Acc: 4.9292986425339365%
+Epoch1 [4440/6250] Loss: 4.2900190353393555, Acc: 4.946509009009009%
+Epoch1 [4460/6250] Loss: 4.288499355316162, Acc: 4.971973094170404%
+Epoch1 [4480/6250] Loss: 4.28757905960083, Acc: 4.983258928571429%
+Epoch1 [4500/6250] Loss: 4.286709308624268, Acc: 4.9944444444444445%
+Epoch1 [4520/6250] Loss: 4.284863471984863, Acc: 5.008296460176991%
+Epoch1 [4540/6250] Loss: 4.2830328941345215, Acc: 5.0357929515418505%
+Epoch1 [4560/6250] Loss: 4.281897068023682, Acc: 5.035635964912281%
+Epoch1 [4580/6250] Loss: 4.281263828277588, Acc: 5.057314410480349%
+Epoch1 [4600/6250] Loss: 4.27955436706543, Acc: 5.0625%
+Epoch1 [4620/6250] Loss: 4.278331756591797, Acc: 5.07034632034632%
+Epoch1 [4640/6250] Loss: 4.2764177322387695, Acc: 5.0969827586206895%
+Epoch1 [4660/6250] Loss: 4.275358200073242, Acc: 5.115343347639485%
+Epoch1 [4680/6250] Loss: 4.273266315460205, Acc: 5.128205128205128%
+Epoch1 [4700/6250] Loss: 4.272274017333984, Acc: 5.127659574468085%
+Epoch1 [4720/6250] Loss: 4.271272659301758, Acc: 5.127118644067796%
+Epoch1 [4740/6250] Loss: 4.270210266113281, Acc: 5.147679324894515%
+Epoch1 [4760/6250] Loss: 4.269371509552002, Acc: 5.152310924369748%
+Epoch1 [4780/6250] Loss: 4.267398357391357, Acc: 5.185669456066946%
+Epoch1 [4800/6250] Loss: 4.266459941864014, Acc: 5.200520833333333%
+Epoch1 [4820/6250] Loss: 4.265169143676758, Acc: 5.210062240663901%
+Epoch1 [4840/6250] Loss: 4.264642715454102, Acc: 5.211776859504132%
+Epoch1 [4860/6250] Loss: 4.263226509094238, Acc: 5.223765432098766%
+Epoch1 [4880/6250] Loss: 4.261876106262207, Acc: 5.243340163934426%
+Epoch1 [4900/6250] Loss: 4.260589599609375, Acc: 5.262755102040816%
+Epoch1 [4920/6250] Loss: 4.259908199310303, Acc: 5.271849593495935%
+Epoch1 [4940/6250] Loss: 4.258740425109863, Acc: 5.290991902834008%
+Epoch1 [4960/6250] Loss: 4.2572855949401855, Acc: 5.317540322580645%
+Epoch1 [4980/6250] Loss: 4.2560811042785645, Acc: 5.338855421686747%
+Epoch1 [5000/6250] Loss: 4.254924297332764, Acc: 5.3425%
+Epoch1 [5020/6250] Loss: 4.2540059089660645, Acc: 5.341135458167331%
+Epoch1 [5040/6250] Loss: 4.253431797027588, Acc: 5.357142857142857%
+Epoch1 [5060/6250] Loss: 4.252315998077393, Acc: 5.370553359683795%
+Epoch1 [5080/6250] Loss: 4.251626491546631, Acc: 5.3764763779527565%
+Epoch1 [5100/6250] Loss: 4.250423431396484, Acc: 5.387254901960784%
+Epoch1 [5120/6250] Loss: 4.248677730560303, Acc: 5.400390625%
+Epoch1 [5140/6250] Loss: 4.247076988220215, Acc: 5.4158560311284045%
+Epoch1 [5160/6250] Loss: 4.245417594909668, Acc: 5.438468992248062%
+Epoch1 [5180/6250] Loss: 4.24464750289917, Acc: 5.446428571428571%
+Epoch1 [5200/6250] Loss: 4.24347448348999, Acc: 5.4519230769230775%
+Epoch1 [5220/6250] Loss: 4.241941928863525, Acc: 5.466954022988506%
+Epoch1 [5240/6250] Loss: 4.240522861480713, Acc: 5.491412213740459%
+Epoch1 [5260/6250] Loss: 4.239400386810303, Acc: 5.503802281368821%
+Epoch1 [5280/6250] Loss: 4.237877368927002, Acc: 5.525568181818182%
+Epoch1 [5300/6250] Loss: 4.236542701721191, Acc: 5.528301886792453%
+Epoch1 [5320/6250] Loss: 4.235939025878906, Acc: 5.538063909774436%
+Epoch1 [5340/6250] Loss: 4.234463691711426, Acc: 5.559456928838951%
+Epoch1 [5360/6250] Loss: 4.2335524559021, Acc: 5.576026119402985%
+Epoch1 [5380/6250] Loss: 4.232263565063477, Acc: 5.587825278810409%
+Epoch1 [5400/6250] Loss: 4.231156826019287, Acc: 5.592592592592593%
+Epoch1 [5420/6250] Loss: 4.229775905609131, Acc: 5.608856088560885%
+Epoch1 [5440/6250] Loss: 4.22905158996582, Acc: 5.615808823529412%
+Epoch1 [5460/6250] Loss: 4.228173732757568, Acc: 5.613553113553114%
+Epoch1 [5480/6250] Loss: 4.226938724517822, Acc: 5.634124087591241%
+Epoch1 [5500/6250] Loss: 4.226550102233887, Acc: 5.63409090909091%
+Epoch1 [5520/6250] Loss: 4.225137233734131, Acc: 5.647644927536232%
+Epoch1 [5540/6250] Loss: 4.223452091217041, Acc: 5.65884476534296%
+Epoch1 [5560/6250] Loss: 4.222553253173828, Acc: 5.66771582733813%
+Epoch1 [5580/6250] Loss: 4.221138954162598, Acc: 5.678763440860215%
+Epoch1 [5600/6250] Loss: 4.2198944091796875, Acc: 5.691964285714286%
+Epoch1 [5620/6250] Loss: 4.219049453735352, Acc: 5.698398576512456%
+Epoch1 [5640/6250] Loss: 4.217650890350342, Acc: 5.713652482269504%
+Epoch1 [5660/6250] Loss: 4.217281818389893, Acc: 5.715547703180212%
+Epoch1 [5680/6250] Loss: 4.21596097946167, Acc: 5.730633802816901%
+Epoch1 [5700/6250] Loss: 4.214406490325928, Acc: 5.758771929824561%
+Epoch1 [5720/6250] Loss: 4.2136688232421875, Acc: 5.773601398601399%
+Epoch1 [5740/6250] Loss: 4.212543964385986, Acc: 5.7839721254355405%
+Epoch1 [5760/6250] Loss: 4.211914539337158, Acc: 5.80078125%
+Epoch1 [5780/6250] Loss: 4.211242198944092, Acc: 5.81098615916955%
+Epoch1 [5800/6250] Loss: 4.209851264953613, Acc: 5.827586206896552%
+Epoch1 [5820/6250] Loss: 4.2098870277404785, Acc: 5.824742268041237%
+Epoch1 [5840/6250] Loss: 4.209155559539795, Acc: 5.836900684931507%
+Epoch1 [5860/6250] Loss: 4.2085862159729, Acc: 5.834044368600683%
+Epoch1 [5880/6250] Loss: 4.208013534545898, Acc: 5.837585034013605%
+Epoch1 [5900/6250] Loss: 4.207919597625732, Acc: 5.832627118644068%
+Epoch1 [5920/6250] Loss: 4.207489967346191, Acc: 5.844594594594595%
+Epoch1 [5940/6250] Loss: 4.206721305847168, Acc: 5.858585858585859%
+Epoch1 [5960/6250] Loss: 4.206359386444092, Acc: 5.866191275167785%
+Epoch1 [5980/6250] Loss: 4.205616474151611, Acc: 5.877926421404682%
+Epoch1 [6000/6250] Loss: 4.205010414123535, Acc: 5.885416666666667%
+Epoch1 [6020/6250] Loss: 4.204329967498779, Acc: 5.884551495016612%
+Epoch1 [6040/6250] Loss: 4.20412015914917, Acc: 5.889900662251655%
+Epoch1 [6060/6250] Loss: 4.203981399536133, Acc: 5.878712871287128%
+Epoch1 [6080/6250] Loss: 4.203441619873047, Acc: 5.884046052631579%
+Epoch1 [6100/6250] Loss: 4.2027058601379395, Acc: 5.895491803278689%
+Epoch1 [6120/6250] Loss: 4.201785564422607, Acc: 5.898692810457516%
+Epoch1 [6140/6250] Loss: 4.201235294342041, Acc: 5.8937296416938105%
+Epoch1 [6160/6250] Loss: 4.2008957862854, Acc: 5.894886363636364%
+Epoch1 [6180/6250] Loss: 4.200425624847412, Acc: 5.904126213592233%
+Epoch1 [6200/6250] Loss: 4.199544429779053, Acc: 5.923387096774194%
+Epoch1 [6220/6250] Loss: 4.198591232299805, Acc: 5.934485530546624%
+Epoch1 [6240/6250] Loss: 4.1980462074279785, Acc: 5.939503205128204%
+Epoch1_end: Wed Oct 27 12:24:17 2021
+Training Loss: 4.197736740112305, Training Acc: 5.94%
+[finished:40] Acc: 7.5%
+[finished:80] Acc: 10.0%
+[finished:120] Acc: 6.666666666666667%
+[finished:160] Acc: 8.125%
+[finished:200] Acc: 8.0%
+[finished:240] Acc: 9.583333333333334%
+[finished:280] Acc: 8.928571428571429%
+[finished:320] Acc: 8.4375%
+[finished:360] Acc: 7.777777777777778%
+[finished:400] Acc: 7.5%
+[finished:440] Acc: 7.045454545454545%
+[finished:480] Acc: 7.291666666666667%
+[finished:520] Acc: 7.5%
+[finished:560] Acc: 6.964285714285714%
+[finished:600] Acc: 6.833333333333333%
+[finished:640] Acc: 7.03125%
+[finished:680] Acc: 7.0588235294117645%
+[finished:720] Acc: 6.944444444444445%
+[finished:760] Acc: 7.105263157894736%
+[finished:800] Acc: 7.249999999999999%
+[finished:840] Acc: 7.380952380952381%
+[finished:880] Acc: 7.613636363636364%
+[finished:920] Acc: 7.608695652173914%
+[finished:960] Acc: 7.708333333333334%
+[finished:1000] Acc: 7.8%
+[finished:1040] Acc: 7.6923076923076925%
+[finished:1080] Acc: 7.685185185185185%
+[finished:1120] Acc: 7.5%
+[finished:1160] Acc: 7.672413793103448%
+[finished:1200] Acc: 7.666666666666666%
+[finished:1240] Acc: 7.5%
+[finished:1280] Acc: 7.5%
+[finished:1320] Acc: 7.348484848484849%
+[finished:1360] Acc: 7.352941176470589%
+[finished:1400] Acc: 7.214285714285714%
+[finished:1440] Acc: 7.083333333333333%
+[finished:1480] Acc: 7.094594594594595%
+[finished:1520] Acc: 6.973684210526315%
+[finished:1560] Acc: 7.051282051282051%
+[finished:1600] Acc: 7.000000000000001%
+[finished:1640] Acc: 6.829268292682928%
+[finished:1680] Acc: 6.785714285714286%
+[finished:1720] Acc: 6.744186046511628%
+[finished:1760] Acc: 6.761363636363636%
+[finished:1800] Acc: 6.722222222222222%
+[finished:1840] Acc: 6.8478260869565215%
+[finished:1880] Acc: 6.75531914893617%
+[finished:1920] Acc: 6.822916666666666%
+[finished:1960] Acc: 6.683673469387755%
+[finished:2000] Acc: 6.800000000000001%
+[finished:2040] Acc: 6.862745098039216%
+[finished:2080] Acc: 6.730769230769231%
+[finished:2120] Acc: 6.650943396226415%
+[finished:2160] Acc: 6.666666666666667%
+[finished:2200] Acc: 6.7272727272727275%
+[finished:2240] Acc: 6.741071428571428%
+[finished:2280] Acc: 6.7105263157894735%
+[finished:2320] Acc: 6.724137931034482%
+[finished:2360] Acc: 6.737288135593221%
+[finished:2400] Acc: 6.791666666666667%
+[finished:2440] Acc: 6.885245901639345%
+[finished:2480] Acc: 6.975806451612904%
+[finished:2520] Acc: 6.904761904761905%
+[finished:2560] Acc: 6.875000000000001%
+[finished:2600] Acc: 7.000000000000001%
+[finished:2640] Acc: 7.007575757575757%
+[finished:2680] Acc: 6.977611940298507%
+[finished:2720] Acc: 6.9485294117647065%
+[finished:2760] Acc: 6.956521739130435%
+[finished:2800] Acc: 6.964285714285714%
+[finished:2840] Acc: 6.93661971830986%
+[finished:2880] Acc: 6.909722222222222%
+[finished:2920] Acc: 6.883561643835616%
+[finished:2960] Acc: 6.824324324324324%
+[finished:3000] Acc: 6.833333333333333%
+[finished:3040] Acc: 6.842105263157896%
+[finished:3080] Acc: 6.883116883116883%
+[finished:3120] Acc: 6.923076923076923%
+[finished:3160] Acc: 6.930379746835443%
+[finished:3200] Acc: 6.937500000000001%
+[finished:3240] Acc: 6.882716049382716%
+[finished:3280] Acc: 6.859756097560976%
+[finished:3320] Acc: 6.837349397590361%
+[finished:3360] Acc: 6.81547619047619%
+[finished:3400] Acc: 6.794117647058824%
+[finished:3440] Acc: 6.802325581395349%
+[finished:3480] Acc: 6.781609195402299%
+[finished:3520] Acc: 6.875000000000001%
+[finished:3560] Acc: 6.910112359550562%
+[finished:3600] Acc: 6.888888888888889%
+[finished:3640] Acc: 6.950549450549451%
+[finished:3680] Acc: 6.983695652173913%
+[finished:3720] Acc: 6.96236559139785%
+[finished:3760] Acc: 6.99468085106383%
+[finished:3800] Acc: 7.026315789473685%
+[finished:3840] Acc: 7.083333333333333%
+[finished:3880] Acc: 7.010309278350515%
+[finished:3920] Acc: 6.9897959183673475%
+[finished:3960] Acc: 6.944444444444445%
+[finished:4000] Acc: 6.950000000000001%
+[finished:4040] Acc: 7.004950495049505%
+[finished:4080] Acc: 7.009803921568627%
+[finished:4120] Acc: 7.038834951456311%
+[finished:4160] Acc: 7.019230769230769%
+[finished:4200] Acc: 7.000000000000001%
+[finished:4240] Acc: 7.0754716981132075%
+[finished:4280] Acc: 7.079439252336448%
+[finished:4320] Acc: 7.037037037037037%
+[finished:4360] Acc: 6.9954128440366965%
+[finished:4400] Acc: 6.9772727272727275%
+[finished:4440] Acc: 7.027027027027027%
+[finished:4480] Acc: 6.986607142857143%
+[finished:4520] Acc: 6.991150442477877%
+[finished:4560] Acc: 7.039473684210526%
+[finished:4600] Acc: 7.086956521739131%
+[finished:4640] Acc: 7.09051724137931%
+[finished:4680] Acc: 7.051282051282051%
+[finished:4720] Acc: 6.991525423728813%
+[finished:4760] Acc: 7.03781512605042%
+[finished:4800] Acc: 7.041666666666667%
+[finished:4840] Acc: 7.004132231404958%
+[finished:4880] Acc: 6.9877049180327875%
+[finished:4920] Acc: 6.991869918699186%
+[finished:4960] Acc: 6.955645161290322%
+[finished:5000] Acc: 6.98%
+[finished:5040] Acc: 7.0436507936507935%
+[finished:5080] Acc: 7.02755905511811%
+[finished:5120] Acc: 7.01171875%
+[finished:5160] Acc: 6.976744186046512%
+[finished:5200] Acc: 6.961538461538462%
+[finished:5240] Acc: 6.984732824427481%
+[finished:5280] Acc: 7.007575757575757%
+[finished:5320] Acc: 6.954887218045112%
+[finished:5360] Acc: 6.958955223880597%
+[finished:5400] Acc: 7.000000000000001%
+[finished:5440] Acc: 6.966911764705882%
+[finished:5480] Acc: 6.952554744525548%
+[finished:5520] Acc: 6.938405797101449%
+[finished:5560] Acc: 6.9784172661870505%
+[finished:5600] Acc: 7.017857142857142%
+[finished:5640] Acc: 6.98581560283688%
+[finished:5680] Acc: 7.059859154929578%
+[finished:5720] Acc: 7.062937062937063%
+[finished:5760] Acc: 7.048611111111111%
+[finished:5800] Acc: 7.06896551724138%
+[finished:5840] Acc: 7.037671232876712%
+[finished:5880] Acc: 7.07482993197279%
+[finished:5920] Acc: 7.043918918918919%
+[finished:5960] Acc: 7.030201342281879%
+[finished:6000] Acc: 7.049999999999999%
+[finished:6040] Acc: 7.052980132450331%
+[finished:6080] Acc: 7.05592105263158%
+[finished:6120] Acc: 7.042483660130719%
+[finished:6160] Acc: 7.012987012987012%
+[finished:6200] Acc: 7.000000000000001%
+[finished:6240] Acc: 6.987179487179487%
+[finished:6280] Acc: 7.054140127388535%
+[finished:6320] Acc: 7.088607594936709%
+[finished:6360] Acc: 7.0911949685534585%
+[finished:6400] Acc: 7.109375%
+[finished:6440] Acc: 7.1273291925465845%
+[finished:6480] Acc: 7.114197530864197%
+[finished:6520] Acc: 7.101226993865032%
+[finished:6560] Acc: 7.088414634146341%
+[finished:6600] Acc: 7.075757575757575%
+[finished:6640] Acc: 7.063253012048193%
+[finished:6680] Acc: 7.080838323353293%
+[finished:6720] Acc: 7.113095238095238%
+[finished:6760] Acc: 7.115384615384615%
+[finished:6800] Acc: 7.11764705882353%
+[finished:6840] Acc: 7.119883040935672%
+[finished:6880] Acc: 7.122093023255814%
+[finished:6920] Acc: 7.124277456647398%
+[finished:6960] Acc: 7.140804597701149%
+[finished:7000] Acc: 7.128571428571428%
+[finished:7040] Acc: 7.130681818181818%
+[finished:7080] Acc: 7.175141242937853%
+[finished:7120] Acc: 7.134831460674157%
+[finished:7160] Acc: 7.136871508379889%
+[finished:7200] Acc: 7.152777777777778%
+[finished:7240] Acc: 7.209944751381216%
+[finished:7280] Acc: 7.211538461538461%
+[finished:7320] Acc: 7.213114754098362%
+[finished:7360] Acc: 7.201086956521739%
+[finished:7400] Acc: 7.202702702702703%
+[finished:7440] Acc: 7.217741935483871%
+[finished:7480] Acc: 7.259358288770053%
+[finished:7520] Acc: 7.220744680851064%
+[finished:7560] Acc: 7.235449735449735%
+[finished:7600] Acc: 7.210526315789474%
+[finished:7640] Acc: 7.2382198952879575%
+[finished:7680] Acc: 7.252604166666667%
+[finished:7720] Acc: 7.266839378238342%
+[finished:7760] Acc: 7.31958762886598%
+[finished:7800] Acc: 7.333333333333333%
+[finished:7840] Acc: 7.321428571428572%
+[finished:7880] Acc: 7.296954314720812%
+[finished:7920] Acc: 7.2853535353535355%
+[finished:7960] Acc: 7.298994974874372%
+[finished:8000] Acc: 7.324999999999999%
+[finished:8040] Acc: 7.288557213930348%
+[finished:8080] Acc: 7.277227722772277%
+[finished:8120] Acc: 7.266009852216748%
+[finished:8160] Acc: 7.254901960784315%
+[finished:8200] Acc: 7.2560975609756095%
+[finished:8240] Acc: 7.281553398058252%
+[finished:8280] Acc: 7.270531400966183%
+[finished:8320] Acc: 7.247596153846154%
+[finished:8360] Acc: 7.260765550239235%
+[finished:8400] Acc: 7.273809523809524%
+[finished:8440] Acc: 7.251184834123222%
+[finished:8480] Acc: 7.2405660377358485%
+[finished:8520] Acc: 7.253521126760563%
+[finished:8560] Acc: 7.266355140186915%
+[finished:8600] Acc: 7.279069767441861%
+[finished:8640] Acc: 7.280092592592593%
+[finished:8680] Acc: 7.269585253456221%
+[finished:8720] Acc: 7.270642201834862%
+[finished:8760] Acc: 7.294520547945206%
+[finished:8800] Acc: 7.295454545454545%
+[finished:8840] Acc: 7.285067873303168%
+[finished:8880] Acc: 7.297297297297297%
+[finished:8920] Acc: 7.286995515695067%
+[finished:8960] Acc: 7.276785714285714%
+[finished:9000] Acc: 7.277777777777778%
+[finished:9040] Acc: 7.278761061946902%
+[finished:9080] Acc: 7.257709251101321%
+[finished:9120] Acc: 7.236842105263158%
+[finished:9160] Acc: 7.237991266375546%
+[finished:9200] Acc: 7.228260869565217%
+[finished:9240] Acc: 7.196969696969697%
+[finished:9280] Acc: 7.176724137931034%
+[finished:9320] Acc: 7.156652360515022%
+[finished:9360] Acc: 7.136752136752136%
+[finished:9400] Acc: 7.159574468085106%
+[finished:9440] Acc: 7.171610169491525%
+[finished:9480] Acc: 7.141350210970463%
+[finished:9520] Acc: 7.13235294117647%
+[finished:9560] Acc: 7.1861924686192475%
+[finished:9600] Acc: 7.187499999999999%
+[finished:9640] Acc: 7.178423236514522%
+[finished:9680] Acc: 7.190082644628099%
+[finished:9720] Acc: 7.20164609053498%
+[finished:9760] Acc: 7.202868852459017%
+[finished:9800] Acc: 7.214285714285714%
+[finished:9840] Acc: 7.205284552845528%
+[finished:9880] Acc: 7.196356275303644%
+[finished:9920] Acc: 7.227822580645162%
+[finished:9960] Acc: 7.228915662650602%
+[finished:10000] Acc: 7.23%
+Validated on 10000 Images, Accuracy: 7.23%
+[tensor(4.1977, device='cuda:0', grad_fn=<DivBackward0>)]
+[5.94]
+[7.23]
+Saving:
+Checkpoint Saved to '../save/pretrain_cifar100/Max1acc_7.23.pth'
+
+Epoch2_start: Wed Oct 27 12:25:39 2021
+Epoch2 [20/6250] Loss: 3.916757583618164, Acc: 8.125%
+Epoch2 [40/6250] Loss: 3.9366345405578613, Acc: 8.75%
+Epoch2 [60/6250] Loss: 3.9598374366760254, Acc: 9.583333333333334%
+Epoch2 [80/6250] Loss: 3.9886415004730225, Acc: 8.90625%
+Epoch2 [100/6250] Loss: 3.981854200363159, Acc: 8.625%
+Epoch2 [120/6250] Loss: 3.9793033599853516, Acc: 8.229166666666666%
+Epoch2 [140/6250] Loss: 3.9677140712738037, Acc: 8.125%
+Epoch2 [160/6250] Loss: 3.9707844257354736, Acc: 8.203125%
+Epoch2 [180/6250] Loss: 3.965259552001953, Acc: 8.61111111111111%
+Epoch2 [200/6250] Loss: 3.985069990158081, Acc: 8.1875%
+Epoch2 [220/6250] Loss: 3.982661008834839, Acc: 8.295454545454547%
+Epoch2 [240/6250] Loss: 3.9821767807006836, Acc: 8.385416666666666%
+Epoch2 [260/6250] Loss: 3.986828088760376, Acc: 8.413461538461538%
+Epoch2 [280/6250] Loss: 3.988323211669922, Acc: 8.392857142857142%
+Epoch2 [300/6250] Loss: 3.973637342453003, Acc: 8.5%
+Epoch2 [320/6250] Loss: 3.9668407440185547, Acc: 8.3203125%
+Epoch2 [340/6250] Loss: 3.9683589935302734, Acc: 8.345588235294118%
+Epoch2 [360/6250] Loss: 3.967707633972168, Acc: 8.26388888888889%
+Epoch2 [380/6250] Loss: 3.971287965774536, Acc: 7.993421052631579%
+Epoch2 [400/6250] Loss: 3.973461627960205, Acc: 8.03125%
+Epoch2 [420/6250] Loss: 3.9737603664398193, Acc: 8.154761904761905%
+Epoch2 [440/6250] Loss: 3.9700934886932373, Acc: 8.068181818181818%
+Epoch2 [460/6250] Loss: 3.9711320400238037, Acc: 8.043478260869565%
+Epoch2 [480/6250] Loss: 3.9726409912109375, Acc: 8.151041666666666%
+Epoch2 [500/6250] Loss: 3.9714627265930176, Acc: 8.3%
+Epoch2 [520/6250] Loss: 3.9758388996124268, Acc: 8.221153846153847%
+Epoch2 [540/6250] Loss: 3.974518060684204, Acc: 8.217592592592593%
+Epoch2 [560/6250] Loss: 3.973752737045288, Acc: 8.28125%
+Epoch2 [580/6250] Loss: 3.9778711795806885, Acc: 8.297413793103448%
+Epoch2 [600/6250] Loss: 3.9736108779907227, Acc: 8.395833333333332%
+Epoch2 [620/6250] Loss: 3.976134777069092, Acc: 8.346774193548386%
+Epoch2 [640/6250] Loss: 3.975386381149292, Acc: 8.37890625%
+Epoch2 [660/6250] Loss: 3.969947338104248, Acc: 8.503787878787879%
+Epoch2 [680/6250] Loss: 3.9679558277130127, Acc: 8.54779411764706%
+Epoch2 [700/6250] Loss: 3.9681217670440674, Acc: 8.607142857142858%
+Epoch2 [720/6250] Loss: 3.9648523330688477, Acc: 8.73263888888889%
+Epoch2 [740/6250] Loss: 3.966184616088867, Acc: 8.64864864864865%
+Epoch2 [760/6250] Loss: 3.964871883392334, Acc: 8.651315789473685%
+Epoch2 [780/6250] Loss: 3.9633266925811768, Acc: 8.669871794871794%
+Epoch2 [800/6250] Loss: 3.9643380641937256, Acc: 8.625%
+Epoch2 [820/6250] Loss: 3.966165781021118, Acc: 8.61280487804878%
+Epoch2 [840/6250] Loss: 3.970374584197998, Acc: 8.645833333333334%
+Epoch2 [860/6250] Loss: 3.967737913131714, Acc: 8.633720930232558%
+Epoch2 [880/6250] Loss: 3.9631707668304443, Acc: 8.579545454545455%
+Epoch2 [900/6250] Loss: 3.9619758129119873, Acc: 8.583333333333334%
+Epoch2 [920/6250] Loss: 3.960242509841919, Acc: 8.641304347826088%
+Epoch2 [940/6250] Loss: 3.9599545001983643, Acc: 8.683510638297873%
+Epoch2 [960/6250] Loss: 3.9627933502197266, Acc: 8.645833333333334%
+Epoch2 [980/6250] Loss: 3.9625282287597656, Acc: 8.622448979591837%
+Epoch2 [1000/6250] Loss: 3.9593119621276855, Acc: 8.6875%
+Epoch2 [1020/6250] Loss: 3.9585206508636475, Acc: 8.700980392156863%
+Epoch2 [1040/6250] Loss: 3.9562833309173584, Acc: 8.737980769230768%
+Epoch2 [1060/6250] Loss: 3.9545857906341553, Acc: 8.73820754716981%
+Epoch2 [1080/6250] Loss: 3.953941822052002, Acc: 8.726851851851853%
+Epoch2 [1100/6250] Loss: 3.9501771926879883, Acc: 8.795454545454545%
+Epoch2 [1120/6250] Loss: 3.9495391845703125, Acc: 8.794642857142858%
+Epoch2 [1140/6250] Loss: 3.94661283493042, Acc: 8.848684210526315%
+Epoch2 [1160/6250] Loss: 3.9456307888031006, Acc: 8.803879310344827%
+Epoch2 [1180/6250] Loss: 3.940716028213501, Acc: 8.866525423728813%
+Epoch2 [1200/6250] Loss: 3.939941883087158, Acc: 8.822916666666666%
+Epoch2 [1220/6250] Loss: 3.9374728202819824, Acc: 8.852459016393443%
+Epoch2 [1240/6250] Loss: 3.9365508556365967, Acc: 8.840725806451614%
+Epoch2 [1260/6250] Loss: 3.935246229171753, Acc: 8.829365079365079%
+Epoch2 [1280/6250] Loss: 3.9336628913879395, Acc: 8.828125%
+Epoch2 [1300/6250] Loss: 3.9359912872314453, Acc: 8.807692307692308%
+Epoch2 [1320/6250] Loss: 3.9334001541137695, Acc: 8.835227272727272%
+Epoch2 [1340/6250] Loss: 3.9334847927093506, Acc: 8.861940298507463%
+Epoch2 [1360/6250] Loss: 3.933851957321167, Acc: 8.841911764705882%
+Epoch2 [1380/6250] Loss: 3.9342310428619385, Acc: 8.795289855072463%
+Epoch2 [1400/6250] Loss: 3.933840751647949, Acc: 8.785714285714285%
+Epoch2 [1420/6250] Loss: 3.9326157569885254, Acc: 8.794014084507042%
+Epoch2 [1440/6250] Loss: 3.932737350463867, Acc: 8.76736111111111%
+Epoch2 [1460/6250] Loss: 3.932426929473877, Acc: 8.792808219178081%
+Epoch2 [1480/6250] Loss: 3.9327571392059326, Acc: 8.775337837837839%
+Epoch2 [1500/6250] Loss: 3.932670831680298, Acc: 8.774999999999999%
+Epoch2 [1520/6250] Loss: 3.932800531387329, Acc: 8.774671052631579%
+Epoch2 [1540/6250] Loss: 3.930851936340332, Acc: 8.7987012987013%
+Epoch2 [1560/6250] Loss: 3.932161569595337, Acc: 8.782051282051281%
+Epoch2 [1580/6250] Loss: 3.931001901626587, Acc: 8.797468354430379%
+Epoch2 [1600/6250] Loss: 3.931396961212158, Acc: 8.8046875%
+Epoch2 [1620/6250] Loss: 3.9304709434509277, Acc: 8.842592592592592%
+Epoch2 [1640/6250] Loss: 3.9302284717559814, Acc: 8.841463414634147%
+Epoch2 [1660/6250] Loss: 3.928912401199341, Acc: 8.855421686746988%
+Epoch2 [1680/6250] Loss: 3.9318172931671143, Acc: 8.794642857142858%
+Epoch2 [1700/6250] Loss: 3.932262420654297, Acc: 8.779411764705882%
+Epoch2 [1720/6250] Loss: 3.932199001312256, Acc: 8.757267441860465%
+Epoch2 [1740/6250] Loss: 3.9334142208099365, Acc: 8.721264367816092%
+Epoch2 [1760/6250] Loss: 3.9347128868103027, Acc: 8.707386363636363%
+Epoch2 [1780/6250] Loss: 3.9328486919403076, Acc: 8.728932584269664%
+Epoch2 [1800/6250] Loss: 3.9317116737365723, Acc: 8.756944444444445%
+Epoch2 [1820/6250] Loss: 3.9330101013183594, Acc: 8.722527472527473%
+Epoch2 [1840/6250] Loss: 3.931142807006836, Acc: 8.777173913043478%
+Epoch2 [1860/6250] Loss: 3.930593490600586, Acc: 8.823924731182796%
+Epoch2 [1880/6250] Loss: 3.92988920211792, Acc: 8.836436170212766%
+Epoch2 [1900/6250] Loss: 3.9307937622070312, Acc: 8.81578947368421%
+Epoch2 [1920/6250] Loss: 3.9289000034332275, Acc: 8.84765625%
+Epoch2 [1940/6250] Loss: 3.927565574645996, Acc: 8.872422680412372%
+Epoch2 [1960/6250] Loss: 3.9261560440063477, Acc: 8.928571428571429%
+Epoch2 [1980/6250] Loss: 3.9273407459259033, Acc: 8.89520202020202%
+Epoch2 [2000/6250] Loss: 3.925999164581299, Acc: 8.93125%
+Epoch2 [2020/6250] Loss: 3.927018165588379, Acc: 8.91089108910891%
+Epoch2 [2040/6250] Loss: 3.926370143890381, Acc: 8.915441176470589%
+Epoch2 [2060/6250] Loss: 3.9238693714141846, Acc: 8.938106796116504%
+Epoch2 [2080/6250] Loss: 3.92283034324646, Acc: 8.960336538461538%
+Epoch2 [2100/6250] Loss: 3.92236328125, Acc: 8.952380952380953%
+Epoch2 [2120/6250] Loss: 3.9200680255889893, Acc: 8.97995283018868%
+Epoch2 [2140/6250] Loss: 3.920471429824829, Acc: 9.001168224299064%
+Epoch2 [2160/6250] Loss: 3.9217710494995117, Acc: 8.993055555555555%
+Epoch2 [2180/6250] Loss: 3.922934055328369, Acc: 8.950688073394495%
+Epoch2 [2200/6250] Loss: 3.921391248703003, Acc: 8.9375%
+Epoch2 [2220/6250] Loss: 3.9216182231903076, Acc: 8.958333333333334%
+Epoch2 [2240/6250] Loss: 3.9197797775268555, Acc: 8.989955357142858%
+Epoch2 [2260/6250] Loss: 3.919585704803467, Acc: 8.987831858407079%
+Epoch2 [2280/6250] Loss: 3.9204578399658203, Acc: 9.00219298245614%
+Epoch2 [2300/6250] Loss: 3.9204916954040527, Acc: 9.048913043478262%
+Epoch2 [2320/6250] Loss: 3.9207231998443604, Acc: 9.057112068965518%
+Epoch2 [2340/6250] Loss: 3.9193623065948486, Acc: 9.049145299145298%
+Epoch2 [2360/6250] Loss: 3.9179675579071045, Acc: 9.073093220338983%
+Epoch2 [2380/6250] Loss: 3.917977809906006, Acc: 9.086134453781511%
+Epoch2 [2400/6250] Loss: 3.9174041748046875, Acc: 9.078125%
+Epoch2 [2420/6250] Loss: 3.9171314239501953, Acc: 9.080578512396695%
+Epoch2 [2440/6250] Loss: 3.9167320728302, Acc: 9.077868852459016%
+Epoch2 [2460/6250] Loss: 3.9161226749420166, Acc: 9.110772357723578%
+Epoch2 [2480/6250] Loss: 3.9164865016937256, Acc: 9.08266129032258%
+Epoch2 [2500/6250] Loss: 3.917043924331665, Acc: 9.06%
+Epoch2 [2520/6250] Loss: 3.915785789489746, Acc: 9.112103174603174%
+Epoch2 [2540/6250] Loss: 3.914886474609375, Acc: 9.119094488188976%
+Epoch2 [2560/6250] Loss: 3.9138431549072266, Acc: 9.16015625%
+Epoch2 [2580/6250] Loss: 3.914074659347534, Acc: 9.156976744186046%
+Epoch2 [2600/6250] Loss: 3.914778709411621, Acc: 9.153846153846153%
+Epoch2 [2620/6250] Loss: 3.912659168243408, Acc: 9.179389312977099%
+Epoch2 [2640/6250] Loss: 3.9120869636535645, Acc: 9.199810606060606%
+Epoch2 [2660/6250] Loss: 3.91113543510437, Acc: 9.205827067669173%
+Epoch2 [2680/6250] Loss: 3.9117140769958496, Acc: 9.207089552238806%
+Epoch2 [2700/6250] Loss: 3.9133543968200684, Acc: 9.212962962962964%
+Epoch2 [2720/6250] Loss: 3.912689685821533, Acc: 9.241727941176471%
+Epoch2 [2740/6250] Loss: 3.913071632385254, Acc: 9.251824817518248%
+Epoch2 [2760/6250] Loss: 3.913639545440674, Acc: 9.243659420289855%
+Epoch2 [2780/6250] Loss: 3.9134583473205566, Acc: 9.276079136690647%
+Epoch2 [2800/6250] Loss: 3.9129180908203125, Acc: 9.294642857142858%
+Epoch2 [2820/6250] Loss: 3.912886619567871, Acc: 9.28191489361702%
+Epoch2 [2840/6250] Loss: 3.9124433994293213, Acc: 9.29137323943662%
+Epoch2 [2860/6250] Loss: 3.9125585556030273, Acc: 9.300699300699302%
+Epoch2 [2880/6250] Loss: 3.9127204418182373, Acc: 9.296875%
+Epoch2 [2900/6250] Loss: 3.9139978885650635, Acc: 9.280172413793103%
+Epoch2 [2920/6250] Loss: 3.913529872894287, Acc: 9.272260273972604%
+Epoch2 [2940/6250] Loss: 3.9122402667999268, Acc: 9.285714285714286%
+Epoch2 [2960/6250] Loss: 3.9114866256713867, Acc: 9.277871621621623%
+Epoch2 [2980/6250] Loss: 3.9107377529144287, Acc: 9.274328859060404%
+Epoch2 [3000/6250] Loss: 3.909297466278076, Acc: 9.304166666666665%
+Epoch2 [3020/6250] Loss: 3.9082770347595215, Acc: 9.35844370860927%
+Epoch2 [3040/6250] Loss: 3.908015251159668, Acc: 9.379111842105264%
+Epoch2 [3060/6250] Loss: 3.9085819721221924, Acc: 9.366830065359476%
+Epoch2 [3080/6250] Loss: 3.908076763153076, Acc: 9.375%
+Epoch2 [3100/6250] Loss: 3.9073574542999268, Acc: 9.379032258064516%
+Epoch2 [3120/6250] Loss: 3.9069182872772217, Acc: 9.37900641025641%
+Epoch2 [3140/6250] Loss: 3.906773805618286, Acc: 9.382961783439491%
+Epoch2 [3160/6250] Loss: 3.905606985092163, Acc: 9.386867088607595%
+Epoch2 [3180/6250] Loss: 3.903970956802368, Acc: 9.410377358490567%
+Epoch2 [3200/6250] Loss: 3.902240753173828, Acc: 9.4765625%
+Epoch2 [3220/6250] Loss: 3.901103973388672, Acc: 9.495341614906833%
+Epoch2 [3240/6250] Loss: 3.9006998538970947, Acc: 9.494598765432098%
+Epoch2 [3260/6250] Loss: 3.899653196334839, Acc: 9.51303680981595%
+Epoch2 [3280/6250] Loss: 3.8988192081451416, Acc: 9.493140243902438%
+Epoch2 [3300/6250] Loss: 3.8997271060943604, Acc: 9.484848484848484%
+Epoch2 [3320/6250] Loss: 3.898172616958618, Acc: 9.510542168674698%
+Epoch2 [3340/6250] Loss: 3.897400140762329, Acc: 9.535928143712574%
+Epoch2 [3360/6250] Loss: 3.896594285964966, Acc: 9.564732142857142%
+Epoch2 [3380/6250] Loss: 3.894235610961914, Acc: 9.607988165680473%
+Epoch2 [3400/6250] Loss: 3.89327335357666, Acc: 9.606617647058824%
+Epoch2 [3420/6250] Loss: 3.891735076904297, Acc: 9.62719298245614%
+Epoch2 [3440/6250] Loss: 3.8902196884155273, Acc: 9.636627906976743%
+Epoch2 [3460/6250] Loss: 3.88899302482605, Acc: 9.627890173410405%
+Epoch2 [3480/6250] Loss: 3.8890109062194824, Acc: 9.64080459770115%
+Epoch2 [3500/6250] Loss: 3.8895885944366455, Acc: 9.628571428571428%
+Epoch2 [3520/6250] Loss: 3.890207290649414, Acc: 9.627130681818182%
+Epoch2 [3540/6250] Loss: 3.8895840644836426, Acc: 9.643361581920903%
+Epoch2 [3560/6250] Loss: 3.889188289642334, Acc: 9.655898876404494%
+Epoch2 [3580/6250] Loss: 3.889256715774536, Acc: 9.647346368715084%
+Epoch2 [3600/6250] Loss: 3.8888564109802246, Acc: 9.649305555555555%
+Epoch2 [3620/6250] Loss: 3.888251781463623, Acc: 9.647790055248619%
+Epoch2 [3640/6250] Loss: 3.888322591781616, Acc: 9.635989010989011%
+Epoch2 [3660/6250] Loss: 3.8890531063079834, Acc: 9.627732240437158%
+Epoch2 [3680/6250] Loss: 3.8902134895324707, Acc: 9.622961956521738%
+Epoch2 [3700/6250] Loss: 3.8904714584350586, Acc: 9.618243243243244%
+Epoch2 [3720/6250] Loss: 3.8900949954986572, Acc: 9.63037634408602%
+Epoch2 [3740/6250] Loss: 3.8889615535736084, Acc: 9.635695187165776%
+Epoch2 [3760/6250] Loss: 3.8896689414978027, Acc: 9.627659574468085%
+Epoch2 [3780/6250] Loss: 3.888864755630493, Acc: 9.632936507936508%
+Epoch2 [3800/6250] Loss: 3.8892292976379395, Acc: 9.62828947368421%
+Epoch2 [3820/6250] Loss: 3.8883514404296875, Acc: 9.640052356020941%
+Epoch2 [3840/6250] Loss: 3.8891799449920654, Acc: 9.632161458333334%
+Epoch2 [3860/6250] Loss: 3.888969898223877, Acc: 9.62759067357513%
+Epoch2 [3880/6250] Loss: 3.8884427547454834, Acc: 9.616623711340207%
+Epoch2 [3900/6250] Loss: 3.888031244277954, Acc: 9.637820512820513%
+Epoch2 [3920/6250] Loss: 3.8876829147338867, Acc: 9.639668367346939%
+Epoch2 [3940/6250] Loss: 3.8874800205230713, Acc: 9.641497461928934%
+Epoch2 [3960/6250] Loss: 3.886709451675415, Acc: 9.652777777777779%
+Epoch2 [3980/6250] Loss: 3.885361433029175, Acc: 9.660804020100503%
+Epoch2 [4000/6250] Loss: 3.8846652507781982, Acc: 9.675%
+Epoch2 [4020/6250] Loss: 3.884608507156372, Acc: 9.676616915422885%
+Epoch2 [4040/6250] Loss: 3.8840787410736084, Acc: 9.696782178217822%
+Epoch2 [4060/6250] Loss: 3.8832437992095947, Acc: 9.713669950738916%
+Epoch2 [4080/6250] Loss: 3.882795810699463, Acc: 9.733455882352942%
+Epoch2 [4100/6250] Loss: 3.8828530311584473, Acc: 9.716463414634147%
+Epoch2 [4120/6250] Loss: 3.8825900554656982, Acc: 9.717839805825243%
+Epoch2 [4140/6250] Loss: 3.88307785987854, Acc: 9.704106280193237%
+Epoch2 [4160/6250] Loss: 3.8821263313293457, Acc: 9.711538461538462%
+Epoch2 [4180/6250] Loss: 3.881380081176758, Acc: 9.730861244019138%
+Epoch2 [4200/6250] Loss: 3.880811929702759, Acc: 9.732142857142858%
+Epoch2 [4220/6250] Loss: 3.880725383758545, Acc: 9.72452606635071%
+Epoch2 [4240/6250] Loss: 3.8807742595672607, Acc: 9.722877358490566%
+Epoch2 [4260/6250] Loss: 3.8807530403137207, Acc: 9.735915492957746%
+Epoch2 [4280/6250] Loss: 3.88049578666687, Acc: 9.725467289719626%
+Epoch2 [4300/6250] Loss: 3.8796911239624023, Acc: 9.747093023255813%
+Epoch2 [4320/6250] Loss: 3.8791308403015137, Acc: 9.754050925925926%
+Epoch2 [4340/6250] Loss: 3.878284454345703, Acc: 9.746543778801843%
+Epoch2 [4360/6250] Loss: 3.8775503635406494, Acc: 9.739105504587156%
+Epoch2 [4380/6250] Loss: 3.8779568672180176, Acc: 9.737442922374429%
+Epoch2 [4400/6250] Loss: 3.878196954727173, Acc: 9.724431818181818%
+Epoch2 [4420/6250] Loss: 3.877821445465088, Acc: 9.734162895927602%
+Epoch2 [4440/6250] Loss: 3.8767213821411133, Acc: 9.749436936936936%
+Epoch2 [4460/6250] Loss: 3.876268148422241, Acc: 9.747757847533633%
+Epoch2 [4480/6250] Loss: 3.876629590988159, Acc: 9.748883928571427%
+Epoch2 [4500/6250] Loss: 3.876220464706421, Acc: 9.775%
+Epoch2 [4520/6250] Loss: 3.8754589557647705, Acc: 9.773230088495575%
+Epoch2 [4540/6250] Loss: 3.874765634536743, Acc: 9.760462555066079%
+Epoch2 [4560/6250] Loss: 3.8742427825927734, Acc: 9.766995614035087%
+Epoch2 [4580/6250] Loss: 3.8744547367095947, Acc: 9.770742358078603%
+Epoch2 [4600/6250] Loss: 3.874016761779785, Acc: 9.769021739130434%
+Epoch2 [4620/6250] Loss: 3.874011278152466, Acc: 9.76461038961039%
+Epoch2 [4640/6250] Loss: 3.8734922409057617, Acc: 9.762931034482758%
+Epoch2 [4660/6250] Loss: 3.8733608722686768, Acc: 9.771995708154506%
+Epoch2 [4680/6250] Loss: 3.8720386028289795, Acc: 9.794337606837606%
+Epoch2 [4700/6250] Loss: 3.8719446659088135, Acc: 9.795212765957446%
+Epoch2 [4720/6250] Loss: 3.872128963470459, Acc: 9.788135593220339%
+Epoch2 [4740/6250] Loss: 3.872122287750244, Acc: 9.78902953586498%
+Epoch2 [4760/6250] Loss: 3.8722119331359863, Acc: 9.784663865546218%
+Epoch2 [4780/6250] Loss: 3.871535062789917, Acc: 9.788179916317992%
+Epoch2 [4800/6250] Loss: 3.871525526046753, Acc: 9.817708333333334%
+Epoch2 [4820/6250] Loss: 3.8714520931243896, Acc: 9.810684647302905%
+Epoch2 [4840/6250] Loss: 3.8715569972991943, Acc: 9.81404958677686%
+Epoch2 [4860/6250] Loss: 3.8706648349761963, Acc: 9.814814814814815%
+Epoch2 [4880/6250] Loss: 3.8703458309173584, Acc: 9.81813524590164%
+Epoch2 [4900/6250] Loss: 3.8692924976348877, Acc: 9.834183673469388%
+Epoch2 [4920/6250] Loss: 3.869826555252075, Acc: 9.829776422764228%
+Epoch2 [4940/6250] Loss: 3.8699395656585693, Acc: 9.835526315789474%
+Epoch2 [4960/6250] Loss: 3.869227647781372, Acc: 9.848790322580646%
+Epoch2 [4980/6250] Loss: 3.869506597518921, Acc: 9.859437751004016%
+Epoch2 [5000/6250] Loss: 3.8691556453704834, Acc: 9.852500000000001%
+Epoch2 [5020/6250] Loss: 3.869264841079712, Acc: 9.845617529880478%
+Epoch2 [5040/6250] Loss: 3.869682550430298, Acc: 9.838789682539682%
+Epoch2 [5060/6250] Loss: 3.869489908218384, Acc: 9.834486166007906%
+Epoch2 [5080/6250] Loss: 3.8699257373809814, Acc: 9.820374015748031%
+Epoch2 [5100/6250] Loss: 3.869985818862915, Acc: 9.813725490196079%
+Epoch2 [5120/6250] Loss: 3.869274616241455, Acc: 9.8291015625%
+Epoch2 [5140/6250] Loss: 3.8684349060058594, Acc: 9.84192607003891%
+Epoch2 [5160/6250] Loss: 3.867698907852173, Acc: 9.871608527131782%
+Epoch2 [5180/6250] Loss: 3.8675150871276855, Acc: 9.879343629343628%
+Epoch2 [5200/6250] Loss: 3.8670127391815186, Acc: 9.877403846153845%
+Epoch2 [5220/6250] Loss: 3.8661792278289795, Acc: 9.887452107279692%
+Epoch2 [5240/6250] Loss: 3.865570306777954, Acc: 9.897423664122137%
+Epoch2 [5260/6250] Loss: 3.8651785850524902, Acc: 9.909695817490494%
+Epoch2 [5280/6250] Loss: 3.864305019378662, Acc: 9.947916666666666%
+Epoch2 [5300/6250] Loss: 3.8640482425689697, Acc: 9.93632075471698%
+Epoch2 [5320/6250] Loss: 3.864152193069458, Acc: 9.93186090225564%
+Epoch2 [5340/6250] Loss: 3.863956928253174, Acc: 9.946161048689138%
+Epoch2 [5360/6250] Loss: 3.8637638092041016, Acc: 9.955690298507463%
+Epoch2 [5380/6250] Loss: 3.8631250858306885, Acc: 9.965148698884759%
+Epoch2 [5400/6250] Loss: 3.8631231784820557, Acc: 9.956018518518519%
+Epoch2 [5420/6250] Loss: 3.862905263900757, Acc: 9.96771217712177%
+Epoch2 [5440/6250] Loss: 3.8631114959716797, Acc: 9.963235294117649%
+Epoch2 [5460/6250] Loss: 3.862992763519287, Acc: 9.95650183150183%
+Epoch2 [5480/6250] Loss: 3.862377166748047, Acc: 9.961222627737227%
+Epoch2 [5500/6250] Loss: 3.8627800941467285, Acc: 9.947727272727274%
+Epoch2 [5520/6250] Loss: 3.862105369567871, Acc: 9.947916666666666%
+Epoch2 [5540/6250] Loss: 3.8610036373138428, Acc: 9.961642599277978%
+Epoch2 [5560/6250] Loss: 3.860842227935791, Acc: 9.966276978417266%
+Epoch2 [5580/6250] Loss: 3.860034942626953, Acc: 9.968637992831543%
+Epoch2 [5600/6250] Loss: 3.859611749649048, Acc: 9.982142857142858%
+Epoch2 [5620/6250] Loss: 3.8590893745422363, Acc: 10.0%
+Epoch2 [5640/6250] Loss: 3.858750104904175, Acc: 10.011081560283689%
+Epoch2 [5660/6250] Loss: 3.858987331390381, Acc: 9.997791519434628%
+Epoch2 [5680/6250] Loss: 3.8583693504333496, Acc: 10.013204225352112%
+Epoch2 [5700/6250] Loss: 3.857760190963745, Acc: 10.030701754385966%
+Epoch2 [5720/6250] Loss: 3.857623815536499, Acc: 10.03715034965035%
+Epoch2 [5740/6250] Loss: 3.857341766357422, Acc: 10.041376306620208%
+Epoch2 [5760/6250] Loss: 3.857513427734375, Acc: 10.049913194444445%
+Epoch2 [5780/6250] Loss: 3.8576323986053467, Acc: 10.04757785467128%
+Epoch2 [5800/6250] Loss: 3.856961727142334, Acc: 10.0625%
+Epoch2 [5820/6250] Loss: 3.8575210571289062, Acc: 10.051546391752577%
+Epoch2 [5840/6250] Loss: 3.856924295425415, Acc: 10.074914383561644%
+Epoch2 [5860/6250] Loss: 3.856672525405884, Acc: 10.085324232081911%
+Epoch2 [5880/6250] Loss: 3.8562328815460205, Acc: 10.095663265306122%
+Epoch2 [5900/6250] Loss: 3.856289863586426, Acc: 10.103813559322033%
+Epoch2 [5920/6250] Loss: 3.856051206588745, Acc: 10.11402027027027%
+Epoch2 [5940/6250] Loss: 3.8557441234588623, Acc: 10.132575757575758%
+Epoch2 [5960/6250] Loss: 3.855872631072998, Acc: 10.138422818791947%
+Epoch2 [5980/6250] Loss: 3.8554530143737793, Acc: 10.146321070234114%
+Epoch2 [6000/6250] Loss: 3.854825258255005, Acc: 10.145833333333334%
+Epoch2 [6020/6250] Loss: 3.8544774055480957, Acc: 10.141196013289036%
+Epoch2 [6040/6250] Loss: 3.8546862602233887, Acc: 10.13865894039735%
+Epoch2 [6060/6250] Loss: 3.855189323425293, Acc: 10.123762376237625%
+Epoch2 [6080/6250] Loss: 3.855222463607788, Acc: 10.108963815789473%
+Epoch2 [6100/6250] Loss: 3.854963541030884, Acc: 10.118852459016393%
+Epoch2 [6120/6250] Loss: 3.8546178340911865, Acc: 10.120506535947712%
+Epoch2 [6140/6250] Loss: 3.8545773029327393, Acc: 10.118078175895766%
+Epoch2 [6160/6250] Loss: 3.8548240661621094, Acc: 10.119724025974026%
+Epoch2 [6180/6250] Loss: 3.854729652404785, Acc: 10.117313915857604%
+Epoch2 [6200/6250] Loss: 3.8541781902313232, Acc: 10.141129032258064%
+Epoch2 [6220/6250] Loss: 3.853989839553833, Acc: 10.136655948553054%
+Epoch2 [6240/6250] Loss: 3.8539202213287354, Acc: 10.142227564102564%
+Epoch2_end: Wed Oct 27 12:45:53 2021
+Training Loss: 3.853663921356201, Training Acc: 10.14%
+[finished:40] Acc: 7.5%
+[finished:80] Acc: 11.25%
+[finished:120] Acc: 10.833333333333334%
+[finished:160] Acc: 12.5%
+[finished:200] Acc: 12.0%
+[finished:240] Acc: 11.666666666666666%
+[finished:280] Acc: 11.428571428571429%
+[finished:320] Acc: 11.25%
+[finished:360] Acc: 10.833333333333334%
+[finished:400] Acc: 12.0%
+[finished:440] Acc: 11.136363636363637%
+[finished:480] Acc: 11.041666666666666%
+[finished:520] Acc: 10.961538461538462%
+[finished:560] Acc: 10.714285714285714%
+[finished:600] Acc: 10.666666666666668%
+[finished:640] Acc: 10.3125%
+[finished:680] Acc: 10.147058823529411%
+[finished:720] Acc: 9.86111111111111%
+[finished:760] Acc: 10.0%
+[finished:800] Acc: 10.25%
+[finished:840] Acc: 10.476190476190476%
+[finished:880] Acc: 10.454545454545453%
+[finished:920] Acc: 10.326086956521738%
+[finished:960] Acc: 10.3125%
+[finished:1000] Acc: 10.7%
+[finished:1040] Acc: 10.480769230769232%
+[finished:1080] Acc: 10.37037037037037%
+[finished:1120] Acc: 10.446428571428571%
+[finished:1160] Acc: 10.689655172413794%
+[finished:1200] Acc: 10.833333333333334%
+[finished:1240] Acc: 10.806451612903226%
+[finished:1280] Acc: 10.703125%
+[finished:1320] Acc: 10.757575757575758%
+[finished:1360] Acc: 10.882352941176471%
+[finished:1400] Acc: 11.0%
+[finished:1440] Acc: 10.972222222222221%
+[finished:1480] Acc: 10.878378378378379%
+[finished:1520] Acc: 10.855263157894738%
+[finished:1560] Acc: 10.833333333333334%
+[finished:1600] Acc: 10.75%
+[finished:1640] Acc: 10.609756097560975%
+[finished:1680] Acc: 10.833333333333334%
+[finished:1720] Acc: 10.813953488372093%
+[finished:1760] Acc: 10.965909090909092%
+[finished:1800] Acc: 10.833333333333334%
+[finished:1840] Acc: 11.032608695652174%
+[finished:1880] Acc: 10.851063829787234%
+[finished:1920] Acc: 10.885416666666666%
+[finished:1960] Acc: 10.76530612244898%
+[finished:2000] Acc: 11.0%
+[finished:2040] Acc: 11.176470588235295%
+[finished:2080] Acc: 11.25%
+[finished:2120] Acc: 11.179245283018869%
+[finished:2160] Acc: 11.157407407407408%
+[finished:2200] Acc: 11.181818181818182%
+[finished:2240] Acc: 11.116071428571427%
+[finished:2280] Acc: 11.008771929824562%
+[finished:2320] Acc: 10.948275862068964%
+[finished:2360] Acc: 10.974576271186441%
+[finished:2400] Acc: 11.041666666666666%
+[finished:2440] Acc: 11.106557377049182%
+[finished:2480] Acc: 11.330645161290324%
+[finished:2520] Acc: 11.34920634920635%
+[finished:2560] Acc: 11.3671875%
+[finished:2600] Acc: 11.5%
+[finished:2640] Acc: 11.553030303030303%
+[finished:2680] Acc: 11.604477611940299%
+[finished:2720] Acc: 11.580882352941178%
+[finished:2760] Acc: 11.630434782608695%
+[finished:2800] Acc: 11.714285714285715%
+[finished:2840] Acc: 11.690140845070422%
+[finished:2880] Acc: 11.770833333333334%
+[finished:2920] Acc: 11.678082191780822%
+[finished:2960] Acc: 11.621621621621623%
+[finished:3000] Acc: 11.600000000000001%
+[finished:3040] Acc: 11.546052631578947%
+[finished:3080] Acc: 11.59090909090909%
+[finished:3120] Acc: 11.634615384615385%
+[finished:3160] Acc: 11.708860759493671%
+[finished:3200] Acc: 11.75%
+[finished:3240] Acc: 11.69753086419753%
+[finished:3280] Acc: 11.676829268292684%
+[finished:3320] Acc: 11.686746987951807%
+[finished:3360] Acc: 11.696428571428571%
+[finished:3400] Acc: 11.617647058823529%
+[finished:3440] Acc: 11.656976744186046%
+[finished:3480] Acc: 11.781609195402298%
+[finished:3520] Acc: 11.818181818181818%
+[finished:3560] Acc: 11.853932584269664%
+[finished:3600] Acc: 11.833333333333334%
+[finished:3640] Acc: 11.84065934065934%
+[finished:3680] Acc: 11.875%
+[finished:3720] Acc: 11.85483870967742%
+[finished:3760] Acc: 11.808510638297873%
+[finished:3800] Acc: 11.921052631578947%
+[finished:3840] Acc: 11.979166666666668%
+[finished:3880] Acc: 11.90721649484536%
+[finished:3920] Acc: 11.964285714285715%
+[finished:3960] Acc: 11.91919191919192%
+[finished:4000] Acc: 11.95%
+[finished:4040] Acc: 11.955445544554454%
+[finished:4080] Acc: 12.009803921568627%
+[finished:4120] Acc: 11.966019417475728%
+[finished:4160] Acc: 11.947115384615385%
+[finished:4200] Acc: 11.904761904761903%
+[finished:4240] Acc: 12.05188679245283%
+[finished:4280] Acc: 12.102803738317757%
+[finished:4320] Acc: 12.037037037037036%
+[finished:4360] Acc: 11.972477064220184%
+[finished:4400] Acc: 11.977272727272727%
+[finished:4440] Acc: 12.072072072072073%
+[finished:4480] Acc: 12.075892857142858%
+[finished:4520] Acc: 12.079646017699115%
+[finished:4560] Acc: 12.12719298245614%
+[finished:4600] Acc: 12.195652173913043%
+[finished:4640] Acc: 12.198275862068964%
+[finished:4680] Acc: 12.136752136752136%
+[finished:4720] Acc: 12.11864406779661%
+[finished:4760] Acc: 12.22689075630252%
+[finished:4800] Acc: 12.229166666666668%
+[finished:4840] Acc: 12.210743801652892%
+[finished:4880] Acc: 12.23360655737705%
+[finished:4920] Acc: 12.215447154471546%
+[finished:4960] Acc: 12.17741935483871%
+[finished:5000] Acc: 12.16%
+[finished:5040] Acc: 12.222222222222221%
+[finished:5080] Acc: 12.18503937007874%
+[finished:5120] Acc: 12.1484375%
+[finished:5160] Acc: 12.054263565891473%
+[finished:5200] Acc: 12.038461538461538%
+[finished:5240] Acc: 12.061068702290076%
+[finished:5280] Acc: 12.06439393939394%
+[finished:5320] Acc: 12.048872180451129%
+[finished:5360] Acc: 12.033582089552239%
+[finished:5400] Acc: 12.092592592592592%
+[finished:5440] Acc: 12.058823529411764%
+[finished:5480] Acc: 12.043795620437956%
+[finished:5520] Acc: 12.047101449275361%
+[finished:5560] Acc: 12.068345323741008%
+[finished:5600] Acc: 12.089285714285715%
+[finished:5640] Acc: 12.039007092198581%
+[finished:5680] Acc: 12.077464788732396%
+[finished:5720] Acc: 12.045454545454545%
+[finished:5760] Acc: 12.04861111111111%
+[finished:5800] Acc: 12.051724137931034%
+[finished:5840] Acc: 12.037671232876711%
+[finished:5880] Acc: 12.040816326530612%
+[finished:5920] Acc: 12.027027027027028%
+[finished:5960] Acc: 12.03020134228188%
+[finished:6000] Acc: 12.083333333333334%
+[finished:6040] Acc: 12.08609271523179%
+[finished:6080] Acc: 12.088815789473683%
+[finished:6120] Acc: 12.091503267973856%
+[finished:6160] Acc: 12.094155844155845%
+[finished:6200] Acc: 12.080645161290322%
+[finished:6240] Acc: 12.083333333333334%
+[finished:6280] Acc: 12.14968152866242%
+[finished:6320] Acc: 12.231012658227849%
+[finished:6360] Acc: 12.232704402515724%
+[finished:6400] Acc: 12.265625%
+[finished:6440] Acc: 12.251552795031056%
+[finished:6480] Acc: 12.222222222222221%
+[finished:6520] Acc: 12.223926380368098%
+[finished:6560] Acc: 12.195121951219512%
+[finished:6600] Acc: 12.136363636363637%
+[finished:6640] Acc: 12.138554216867469%
+[finished:6680] Acc: 12.140718562874252%
+[finished:6720] Acc: 12.142857142857142%
+[finished:6760] Acc: 12.144970414201184%
+[finished:6800] Acc: 12.176470588235293%
+[finished:6840] Acc: 12.149122807017545%
+[finished:6880] Acc: 12.165697674418604%
+[finished:6920] Acc: 12.124277456647398%
+[finished:6960] Acc: 12.155172413793103%
+[finished:7000] Acc: 12.171428571428573%
+[finished:7040] Acc: 12.15909090909091%
+[finished:7080] Acc: 12.161016949152541%
+[finished:7120] Acc: 12.092696629213483%
+[finished:7160] Acc: 12.094972067039105%
+[finished:7200] Acc: 12.083333333333334%
+[finished:7240] Acc: 12.099447513812155%
+[finished:7280] Acc: 12.087912087912088%
+[finished:7320] Acc: 12.049180327868852%
+[finished:7360] Acc: 12.01086956521739%
+[finished:7400] Acc: 12.0%
+[finished:7440] Acc: 11.989247311827956%
+[finished:7480] Acc: 12.072192513368984%
+[finished:7520] Acc: 12.061170212765958%
+[finished:7560] Acc: 12.063492063492063%
+[finished:7600] Acc: 12.026315789473683%
+[finished:7640] Acc: 12.06806282722513%
+[finished:7680] Acc: 12.0703125%
+[finished:7720] Acc: 12.05958549222798%
+[finished:7760] Acc: 12.11340206185567%
+[finished:7800] Acc: 12.08974358974359%
+[finished:7840] Acc: 12.066326530612246%
+[finished:7880] Acc: 12.093908629441625%
+[finished:7920] Acc: 12.058080808080808%
+[finished:7960] Acc: 12.035175879396984%
+[finished:8000] Acc: 12.025%
+[finished:8040] Acc: 12.014925373134329%
+[finished:8080] Acc: 11.98019801980198%
+[finished:8120] Acc: 11.958128078817735%
+[finished:8160] Acc: 11.96078431372549%
+[finished:8200] Acc: 11.963414634146341%
+[finished:8240] Acc: 11.91747572815534%
+[finished:8280] Acc: 11.896135265700483%
+[finished:8320] Acc: 11.875%
+[finished:8360] Acc: 11.889952153110048%
+[finished:8400] Acc: 11.904761904761903%
+[finished:8440] Acc: 11.919431279620852%
+[finished:8480] Acc: 11.945754716981131%
+[finished:8520] Acc: 11.971830985915492%
+[finished:8560] Acc: 11.99766355140187%
+[finished:8600] Acc: 11.976744186046512%
+[finished:8640] Acc: 11.99074074074074%
+[finished:8680] Acc: 11.981566820276496%
+[finished:8720] Acc: 11.983944954128441%
+[finished:8760] Acc: 12.031963470319635%
+[finished:8800] Acc: 12.03409090909091%
+[finished:8840] Acc: 12.024886877828054%
+[finished:8880] Acc: 12.072072072072073%
+[finished:8920] Acc: 12.073991031390134%
+[finished:8960] Acc: 12.042410714285715%
+[finished:9000] Acc: 12.011111111111111%
+[finished:9040] Acc: 12.002212389380531%
+[finished:9080] Acc: 12.015418502202643%
+[finished:9120] Acc: 12.017543859649123%
+[finished:9160] Acc: 12.03056768558952%
+[finished:9200] Acc: 12.0%
+[finished:9240] Acc: 11.98051948051948%
+[finished:9280] Acc: 11.950431034482758%
+[finished:9320] Acc: 11.974248927038627%
+[finished:9360] Acc: 11.944444444444445%
+[finished:9400] Acc: 11.96808510638298%
+[finished:9440] Acc: 11.959745762711863%
+[finished:9480] Acc: 11.940928270042193%
+[finished:9520] Acc: 11.94327731092437%
+[finished:9560] Acc: 11.976987447698745%
+[finished:9600] Acc: 11.989583333333332%
+[finished:9640] Acc: 11.981327800829876%
+[finished:9680] Acc: 12.024793388429753%
+[finished:9720] Acc: 12.04732510288066%
+[finished:9760] Acc: 12.079918032786885%
+[finished:9800] Acc: 12.10204081632653%
+[finished:9840] Acc: 12.063008130081302%
+[finished:9880] Acc: 12.0748987854251%
+[finished:9920] Acc: 12.086693548387096%
+[finished:9960] Acc: 12.098393574297189%
+[finished:10000] Acc: 12.09%
+Validated on 10000 Images, Accuracy: 12.09%
+[tensor(4.1977, device='cuda:0', grad_fn=<DivBackward0>), tensor(3.8537, device='cuda:0', grad_fn=<DivBackward0>)]
+[5.94, 10.14]
+[7.23, 12.09]
+Saving:
+Checkpoint Saved to '../save/pretrain_cifar100/Max2acc_12.09.pth'
+
+Epoch3_start: Wed Oct 27 12:47:16 2021
+Epoch3 [20/6250] Loss: 3.6958634853363037, Acc: 10.625%
+Epoch3 [40/6250] Loss: 3.734517812728882, Acc: 9.375%
+Epoch3 [60/6250] Loss: 3.7065107822418213, Acc: 11.25%
+Epoch3 [80/6250] Loss: 3.7489430904388428, Acc: 11.25%
+Epoch3 [100/6250] Loss: 3.7521116733551025, Acc: 10.75%
+Epoch3 [120/6250] Loss: 3.749321937561035, Acc: 10.833333333333334%
+Epoch3 [140/6250] Loss: 3.7352285385131836, Acc: 11.071428571428571%
+Epoch3 [160/6250] Loss: 3.719670534133911, Acc: 11.5625%
+Epoch3 [180/6250] Loss: 3.7172470092773438, Acc: 11.666666666666666%
+Epoch3 [200/6250] Loss: 3.734229326248169, Acc: 11.375%
+Epoch3 [220/6250] Loss: 3.733515977859497, Acc: 11.704545454545455%
+Epoch3 [240/6250] Loss: 3.7376480102539062, Acc: 11.614583333333334%
+Epoch3 [260/6250] Loss: 3.7473623752593994, Acc: 11.634615384615385%
+Epoch3 [280/6250] Loss: 3.7429966926574707, Acc: 11.875%
+Epoch3 [300/6250] Loss: 3.7323873043060303, Acc: 12.041666666666668%
+Epoch3 [320/6250] Loss: 3.7329869270324707, Acc: 11.8359375%
+Epoch3 [340/6250] Loss: 3.7335779666900635, Acc: 12.095588235294118%
+Epoch3 [360/6250] Loss: 3.741713285446167, Acc: 12.083333333333334%
+Epoch3 [380/6250] Loss: 3.7525382041931152, Acc: 11.710526315789474%
+Epoch3 [400/6250] Loss: 3.756218433380127, Acc: 11.625%
+Epoch3 [420/6250] Loss: 3.758502244949341, Acc: 11.666666666666666%
+Epoch3 [440/6250] Loss: 3.755723476409912, Acc: 11.676136363636363%
+Epoch3 [460/6250] Loss: 3.7591259479522705, Acc: 11.684782608695652%
+Epoch3 [480/6250] Loss: 3.7632710933685303, Acc: 11.640625%
+Epoch3 [500/6250] Loss: 3.766979455947876, Acc: 11.75%
+Epoch3 [520/6250] Loss: 3.7701773643493652, Acc: 11.658653846153847%
+Epoch3 [540/6250] Loss: 3.771183490753174, Acc: 11.527777777777779%
+Epoch3 [560/6250] Loss: 3.771902084350586, Acc: 11.450892857142856%
+Epoch3 [580/6250] Loss: 3.7790677547454834, Acc: 11.443965517241379%
+Epoch3 [600/6250] Loss: 3.7756340503692627, Acc: 11.4375%
+Epoch3 [620/6250] Loss: 3.77933931350708, Acc: 11.391129032258064%
+Epoch3 [640/6250] Loss: 3.7818806171417236, Acc: 11.40625%
+Epoch3 [660/6250] Loss: 3.7763795852661133, Acc: 11.628787878787879%
+Epoch3 [680/6250] Loss: 3.7734246253967285, Acc: 11.67279411764706%
+Epoch3 [700/6250] Loss: 3.7754387855529785, Acc: 11.625%
+Epoch3 [720/6250] Loss: 3.7709438800811768, Acc: 11.753472222222221%
+Epoch3 [740/6250] Loss: 3.7752749919891357, Acc: 11.621621621621623%
+Epoch3 [760/6250] Loss: 3.776993989944458, Acc: 11.546052631578947%
+Epoch3 [780/6250] Loss: 3.7771971225738525, Acc: 11.41025641025641%
+Epoch3 [800/6250] Loss: 3.7791852951049805, Acc: 11.4375%
+Epoch3 [820/6250] Loss: 3.7805306911468506, Acc: 11.463414634146343%
+Epoch3 [840/6250] Loss: 3.7838051319122314, Acc: 11.369047619047619%
+Epoch3 [860/6250] Loss: 3.781668186187744, Acc: 11.337209302325581%
+Epoch3 [880/6250] Loss: 3.777428150177002, Acc: 11.335227272727273%
+Epoch3 [900/6250] Loss: 3.7733962535858154, Acc: 11.347222222222223%
+Epoch3 [920/6250] Loss: 3.7727344036102295, Acc: 11.290760869565217%
+Epoch3 [940/6250] Loss: 3.7713146209716797, Acc: 11.316489361702127%
+Epoch3 [960/6250] Loss: 3.775092363357544, Acc: 11.302083333333334%
+Epoch3 [980/6250] Loss: 3.7754387855529785, Acc: 11.326530612244898%
+Epoch3 [1000/6250] Loss: 3.7739601135253906, Acc: 11.4125%
+Epoch3 [1020/6250] Loss: 3.7750933170318604, Acc: 11.360294117647058%
+Epoch3 [1040/6250] Loss: 3.772766351699829, Acc: 11.334134615384615%
+Epoch3 [1060/6250] Loss: 3.7724344730377197, Acc: 11.33254716981132%
+Epoch3 [1080/6250] Loss: 3.7717132568359375, Acc: 11.273148148148149%
+Epoch3 [1100/6250] Loss: 3.768927574157715, Acc: 11.318181818181818%
+Epoch3 [1120/6250] Loss: 3.769721031188965, Acc: 11.316964285714286%
+Epoch3 [1140/6250] Loss: 3.766428232192993, Acc: 11.425438596491228%
+Epoch3 [1160/6250] Loss: 3.764071226119995, Acc: 11.46551724137931%
+Epoch3 [1180/6250] Loss: 3.7609026432037354, Acc: 11.536016949152543%
+Epoch3 [1200/6250] Loss: 3.761460781097412, Acc: 11.489583333333334%
+Epoch3 [1220/6250] Loss: 3.7600314617156982, Acc: 11.506147540983607%
+Epoch3 [1240/6250] Loss: 3.759389877319336, Acc: 11.51209677419355%
+Epoch3 [1260/6250] Loss: 3.7602806091308594, Acc: 11.527777777777779%
+Epoch3 [1280/6250] Loss: 3.7589595317840576, Acc: 11.513671875%
+Epoch3 [1300/6250] Loss: 3.7613840103149414, Acc: 11.509615384615385%
+Epoch3 [1320/6250] Loss: 3.7589409351348877, Acc: 11.543560606060606%
+Epoch3 [1340/6250] Loss: 3.7592475414276123, Acc: 11.585820895522387%
+Epoch3 [1360/6250] Loss: 3.7611382007598877, Acc: 11.590073529411764%
+Epoch3 [1380/6250] Loss: 3.7612228393554688, Acc: 11.567028985507246%
+Epoch3 [1400/6250] Loss: 3.7597384452819824, Acc: 11.571428571428571%
+Epoch3 [1420/6250] Loss: 3.757344961166382, Acc: 11.619718309859154%
+Epoch3 [1440/6250] Loss: 3.7568359375, Acc: 11.614583333333334%
+Epoch3 [1460/6250] Loss: 3.7561254501342773, Acc: 11.643835616438356%
+Epoch3 [1480/6250] Loss: 3.754847526550293, Acc: 11.680743243243242%
+Epoch3 [1500/6250] Loss: 3.753851890563965, Acc: 11.675%
+Epoch3 [1520/6250] Loss: 3.753340721130371, Acc: 11.677631578947368%
+Epoch3 [1540/6250] Loss: 3.753120183944702, Acc: 11.688311688311687%
+Epoch3 [1560/6250] Loss: 3.7552528381347656, Acc: 11.682692307692308%
+Epoch3 [1580/6250] Loss: 3.7546167373657227, Acc: 11.708860759493671%
+Epoch3 [1600/6250] Loss: 3.754824638366699, Acc: 11.7109375%
+Epoch3 [1620/6250] Loss: 3.75349497795105, Acc: 11.774691358024691%
+Epoch3 [1640/6250] Loss: 3.75254225730896, Acc: 11.821646341463413%
+Epoch3 [1660/6250] Loss: 3.749861001968384, Acc: 11.867469879518072%
+Epoch3 [1680/6250] Loss: 3.7517220973968506, Acc: 11.800595238095237%
+Epoch3 [1700/6250] Loss: 3.75177001953125, Acc: 11.808823529411764%
+Epoch3 [1720/6250] Loss: 3.7522499561309814, Acc: 11.831395348837209%
+Epoch3 [1740/6250] Loss: 3.7525556087493896, Acc: 11.795977011494253%
+Epoch3 [1760/6250] Loss: 3.7528810501098633, Acc: 11.796875%
+Epoch3 [1780/6250] Loss: 3.751519203186035, Acc: 11.853932584269664%
+Epoch3 [1800/6250] Loss: 3.7496731281280518, Acc: 11.881944444444445%
+Epoch3 [1820/6250] Loss: 3.7500202655792236, Acc: 11.861263736263735%
+Epoch3 [1840/6250] Loss: 3.7483742237091064, Acc: 11.895380434782608%
+Epoch3 [1860/6250] Loss: 3.7467052936553955, Acc: 11.922043010752688%
+Epoch3 [1880/6250] Loss: 3.745290756225586, Acc: 11.934840425531915%
+Epoch3 [1900/6250] Loss: 3.7470638751983643, Acc: 11.927631578947368%
+Epoch3 [1920/6250] Loss: 3.744828701019287, Acc: 11.97265625%
+Epoch3 [1940/6250] Loss: 3.744633674621582, Acc: 11.958762886597938%
+Epoch3 [1960/6250] Loss: 3.7431724071502686, Acc: 11.97704081632653%
+Epoch3 [1980/6250] Loss: 3.7451460361480713, Acc: 11.957070707070708%
+Epoch3 [2000/6250] Loss: 3.7448484897613525, Acc: 11.95%
+Epoch3 [2020/6250] Loss: 3.746211051940918, Acc: 11.949257425742573%
+Epoch3 [2040/6250] Loss: 3.745551824569702, Acc: 11.948529411764707%
+Epoch3 [2060/6250] Loss: 3.7435431480407715, Acc: 11.978155339805825%
+Epoch3 [2080/6250] Loss: 3.743032932281494, Acc: 11.989182692307693%
+Epoch3 [2100/6250] Loss: 3.742497682571411, Acc: 11.994047619047619%
+Epoch3 [2120/6250] Loss: 3.7410354614257812, Acc: 12.01061320754717%
+Epoch3 [2140/6250] Loss: 3.7412121295928955, Acc: 12.003504672897195%
+Epoch3 [2160/6250] Loss: 3.740851640701294, Acc: 11.996527777777779%
+Epoch3 [2180/6250] Loss: 3.741224527359009, Acc: 11.966743119266054%
+Epoch3 [2200/6250] Loss: 3.738358974456787, Acc: 11.994318181818182%
+Epoch3 [2220/6250] Loss: 3.737813711166382, Acc: 12.004504504504505%
+Epoch3 [2240/6250] Loss: 3.7356457710266113, Acc: 12.008928571428571%
+Epoch3 [2260/6250] Loss: 3.736332893371582, Acc: 11.985619469026549%
+Epoch3 [2280/6250] Loss: 3.7369911670684814, Acc: 11.962719298245613%
+Epoch3 [2300/6250] Loss: 3.736374855041504, Acc: 12.016304347826088%
+Epoch3 [2320/6250] Loss: 3.7362048625946045, Acc: 12.036637931034482%
+Epoch3 [2340/6250] Loss: 3.7354605197906494, Acc: 12.02991452991453%
+Epoch3 [2360/6250] Loss: 3.7346293926239014, Acc: 12.028601694915254%
+Epoch3 [2380/6250] Loss: 3.7354061603546143, Acc: 12.001050420168067%
+Epoch3 [2400/6250] Loss: 3.73516845703125, Acc: 12.0%
+Epoch3 [2420/6250] Loss: 3.7346372604370117, Acc: 12.024793388429753%
+Epoch3 [2440/6250] Loss: 3.733626127243042, Acc: 12.04405737704918%
+Epoch3 [2460/6250] Loss: 3.732907295227051, Acc: 12.06808943089431%
+Epoch3 [2480/6250] Loss: 3.7335290908813477, Acc: 12.07157258064516%
+Epoch3 [2500/6250] Loss: 3.7345128059387207, Acc: 12.049999999999999%
+Epoch3 [2520/6250] Loss: 3.732495069503784, Acc: 12.083333333333334%
+Epoch3 [2540/6250] Loss: 3.730700969696045, Acc: 12.116141732283465%
+Epoch3 [2560/6250] Loss: 3.7296910285949707, Acc: 12.1435546875%
+Epoch3 [2580/6250] Loss: 3.729396343231201, Acc: 12.160852713178294%
+Epoch3 [2600/6250] Loss: 3.7297682762145996, Acc: 12.153846153846153%
+Epoch3 [2620/6250] Loss: 3.7279646396636963, Acc: 12.213740458015266%
+Epoch3 [2640/6250] Loss: 3.726755380630493, Acc: 12.239583333333332%
+Epoch3 [2660/6250] Loss: 3.72651743888855, Acc: 12.24154135338346%
+Epoch3 [2680/6250] Loss: 3.7265989780426025, Acc: 12.229477611940299%
+Epoch3 [2700/6250] Loss: 3.727362871170044, Acc: 12.25925925925926%
+Epoch3 [2720/6250] Loss: 3.7264387607574463, Acc: 12.28860294117647%
+Epoch3 [2740/6250] Loss: 3.727229595184326, Acc: 12.271897810218977%
+Epoch3 [2760/6250] Loss: 3.728086471557617, Acc: 12.269021739130435%
+Epoch3 [2780/6250] Loss: 3.7279531955718994, Acc: 12.320143884892087%
+Epoch3 [2800/6250] Loss: 3.726825714111328, Acc: 12.348214285714286%
+Epoch3 [2820/6250] Loss: 3.7273037433624268, Acc: 12.331560283687944%
+Epoch3 [2840/6250] Loss: 3.7272748947143555, Acc: 12.319542253521126%
+Epoch3 [2860/6250] Loss: 3.7276077270507812, Acc: 12.303321678321678%
+Epoch3 [2880/6250] Loss: 3.7274177074432373, Acc: 12.28732638888889%
+Epoch3 [2900/6250] Loss: 3.728825807571411, Acc: 12.288793103448276%
+Epoch3 [2920/6250] Loss: 3.729055881500244, Acc: 12.28595890410959%
+Epoch3 [2940/6250] Loss: 3.7278709411621094, Acc: 12.295918367346939%
+Epoch3 [2960/6250] Loss: 3.7276084423065186, Acc: 12.28885135135135%
+Epoch3 [2980/6250] Loss: 3.7272167205810547, Acc: 12.311241610738255%
+Epoch3 [3000/6250] Loss: 3.7264299392700195, Acc: 12.3125%
+Epoch3 [3020/6250] Loss: 3.7259511947631836, Acc: 12.330298013245034%
+Epoch3 [3040/6250] Loss: 3.726820945739746, Acc: 12.323190789473685%
+Epoch3 [3060/6250] Loss: 3.7276439666748047, Acc: 12.291666666666666%
+Epoch3 [3080/6250] Loss: 3.7277143001556396, Acc: 12.280844155844155%
+Epoch3 [3100/6250] Loss: 3.7275965213775635, Acc: 12.286290322580646%
+Epoch3 [3120/6250] Loss: 3.7275867462158203, Acc: 12.275641025641026%
+Epoch3 [3140/6250] Loss: 3.728344678878784, Acc: 12.265127388535031%
+Epoch3 [3160/6250] Loss: 3.727302074432373, Acc: 12.274525316455696%
+Epoch3 [3180/6250] Loss: 3.7266504764556885, Acc: 12.275943396226415%
+Epoch3 [3200/6250] Loss: 3.7251622676849365, Acc: 12.328125%
+Epoch3 [3220/6250] Loss: 3.7241106033325195, Acc: 12.325310559006212%
+Epoch3 [3240/6250] Loss: 3.7234792709350586, Acc: 12.36111111111111%
+Epoch3 [3260/6250] Loss: 3.7230701446533203, Acc: 12.381134969325155%
+Epoch3 [3280/6250] Loss: 3.7225661277770996, Acc: 12.366615853658537%
+Epoch3 [3300/6250] Loss: 3.723482847213745, Acc: 12.344696969696969%
+Epoch3 [3320/6250] Loss: 3.721918821334839, Acc: 12.379518072289157%
+Epoch3 [3340/6250] Loss: 3.7211618423461914, Acc: 12.387724550898204%
+Epoch3 [3360/6250] Loss: 3.720531702041626, Acc: 12.406994047619047%
+Epoch3 [3380/6250] Loss: 3.7186391353607178, Acc: 12.42973372781065%
+Epoch3 [3400/6250] Loss: 3.717597723007202, Acc: 12.4375%
+Epoch3 [3420/6250] Loss: 3.71684193611145, Acc: 12.456140350877194%
+Epoch3 [3440/6250] Loss: 3.716024160385132, Acc: 12.452761627906977%
+Epoch3 [3460/6250] Loss: 3.7149503231048584, Acc: 12.47471098265896%
+Epoch3 [3480/6250] Loss: 3.7151846885681152, Acc: 12.47844827586207%
+Epoch3 [3500/6250] Loss: 3.714996337890625, Acc: 12.464285714285714%
+Epoch3 [3520/6250] Loss: 3.7145793437957764, Acc: 12.475142045454547%
+Epoch3 [3540/6250] Loss: 3.7142975330352783, Acc: 12.507062146892656%
+Epoch3 [3560/6250] Loss: 3.7134897708892822, Acc: 12.51755617977528%
+Epoch3 [3580/6250] Loss: 3.7142655849456787, Acc: 12.493016759776536%
+Epoch3 [3600/6250] Loss: 3.7146642208099365, Acc: 12.493055555555555%
+Epoch3 [3620/6250] Loss: 3.714151620864868, Acc: 12.503453038674033%
+Epoch3 [3640/6250] Loss: 3.7144975662231445, Acc: 12.493131868131869%
+Epoch3 [3660/6250] Loss: 3.7148704528808594, Acc: 12.496584699453551%
+Epoch3 [3680/6250] Loss: 3.7159173488616943, Acc: 12.48641304347826%
+Epoch3 [3700/6250] Loss: 3.7159130573272705, Acc: 12.489864864864865%
+Epoch3 [3720/6250] Loss: 3.7155237197875977, Acc: 12.506720430107526%
+Epoch3 [3740/6250] Loss: 3.7146670818328857, Acc: 12.510026737967914%
+Epoch3 [3760/6250] Loss: 3.715975761413574, Acc: 12.493351063829786%
+Epoch3 [3780/6250] Loss: 3.715416193008423, Acc: 12.493386243386244%
+Epoch3 [3800/6250] Loss: 3.7157254219055176, Acc: 12.480263157894738%
+Epoch3 [3820/6250] Loss: 3.714951515197754, Acc: 12.477094240837697%
+Epoch3 [3840/6250] Loss: 3.7160751819610596, Acc: 12.467447916666668%
+Epoch3 [3860/6250] Loss: 3.7163047790527344, Acc: 12.457901554404145%
+Epoch3 [3880/6250] Loss: 3.7163028717041016, Acc: 12.454896907216495%
+Epoch3 [3900/6250] Loss: 3.7160816192626953, Acc: 12.467948717948719%
+Epoch3 [3920/6250] Loss: 3.7167246341705322, Acc: 12.452168367346939%
+Epoch3 [3940/6250] Loss: 3.716846227645874, Acc: 12.449238578680204%
+Epoch3 [3960/6250] Loss: 3.7155284881591797, Acc: 12.471590909090908%
+Epoch3 [3980/6250] Loss: 3.714489459991455, Acc: 12.468592964824122%
+Epoch3 [4000/6250] Loss: 3.7139928340911865, Acc: 12.471875%
+Epoch3 [4020/6250] Loss: 3.714055299758911, Acc: 12.472014925373134%
+Epoch3 [4040/6250] Loss: 3.7135751247406006, Acc: 12.481435643564357%
+Epoch3 [4060/6250] Loss: 3.713444709777832, Acc: 12.49692118226601%
+Epoch3 [4080/6250] Loss: 3.713275671005249, Acc: 12.51531862745098%
+Epoch3 [4100/6250] Loss: 3.713679552078247, Acc: 12.515243902439025%
+Epoch3 [4120/6250] Loss: 3.713243246078491, Acc: 12.527305825242719%
+Epoch3 [4140/6250] Loss: 3.7138824462890625, Acc: 12.518115942028984%
+Epoch3 [4160/6250] Loss: 3.7136406898498535, Acc: 12.51201923076923%
+Epoch3 [4180/6250] Loss: 3.7132253646850586, Acc: 12.511961722488039%
+Epoch3 [4200/6250] Loss: 3.712880849838257, Acc: 12.520833333333334%
+Epoch3 [4220/6250] Loss: 3.7136807441711426, Acc: 12.505924170616115%
+Epoch3 [4240/6250] Loss: 3.713982582092285, Acc: 12.494103773584905%
+Epoch3 [4260/6250] Loss: 3.714491367340088, Acc: 12.482394366197184%
+Epoch3 [4280/6250] Loss: 3.7143726348876953, Acc: 12.467873831775702%
+Epoch3 [4300/6250] Loss: 3.713676691055298, Acc: 12.488372093023257%
+Epoch3 [4320/6250] Loss: 3.713304281234741, Acc: 12.491319444444445%
+Epoch3 [4340/6250] Loss: 3.7129321098327637, Acc: 12.494239631336406%
+Epoch3 [4360/6250] Loss: 3.71311616897583, Acc: 12.502866972477063%
+Epoch3 [4380/6250] Loss: 3.713336229324341, Acc: 12.5%
+Epoch3 [4400/6250] Loss: 3.7140936851501465, Acc: 12.488636363636365%
+Epoch3 [4420/6250] Loss: 3.7139945030212402, Acc: 12.48868778280543%
+Epoch3 [4440/6250] Loss: 3.7134485244750977, Acc: 12.491554054054053%
+Epoch3 [4460/6250] Loss: 3.71342134475708, Acc: 12.497197309417041%
+Epoch3 [4480/6250] Loss: 3.713783025741577, Acc: 12.491629464285714%
+Epoch3 [4500/6250] Loss: 3.7138190269470215, Acc: 12.511111111111111%
+Epoch3 [4520/6250] Loss: 3.713754892349243, Acc: 12.502765486725664%
+Epoch3 [4540/6250] Loss: 3.7131195068359375, Acc: 12.505506607929515%
+Epoch3 [4560/6250] Loss: 3.7128427028656006, Acc: 12.5109649122807%
+Epoch3 [4580/6250] Loss: 3.7134757041931152, Acc: 12.510917030567686%
+Epoch3 [4600/6250] Loss: 3.713066816329956, Acc: 12.510869565217392%
+Epoch3 [4620/6250] Loss: 3.712984561920166, Acc: 12.5%
+Epoch3 [4640/6250] Loss: 3.712390661239624, Acc: 12.513469827586206%
+Epoch3 [4660/6250] Loss: 3.7123374938964844, Acc: 12.513412017167383%
+Epoch3 [4680/6250] Loss: 3.711552381515503, Acc: 12.521367521367521%
+Epoch3 [4700/6250] Loss: 3.7113733291625977, Acc: 12.518617021276595%
+Epoch3 [4720/6250] Loss: 3.71171498298645, Acc: 12.510593220338983%
+Epoch3 [4740/6250] Loss: 3.7119927406311035, Acc: 12.50263713080169%
+Epoch3 [4760/6250] Loss: 3.7119693756103516, Acc: 12.497373949579831%
+Epoch3 [4780/6250] Loss: 3.7114994525909424, Acc: 12.505230125523012%
+Epoch3 [4800/6250] Loss: 3.7119035720825195, Acc: 12.505208333333334%
+Epoch3 [4820/6250] Loss: 3.7115774154663086, Acc: 12.5%
+Epoch3 [4840/6250] Loss: 3.7123005390167236, Acc: 12.492252066115702%
+Epoch3 [4860/6250] Loss: 3.7118887901306152, Acc: 12.492283950617283%
+Epoch3 [4880/6250] Loss: 3.711653232574463, Acc: 12.497438524590164%
+Epoch3 [4900/6250] Loss: 3.711179494857788, Acc: 12.5%
+Epoch3 [4920/6250] Loss: 3.712491273880005, Acc: 12.484756097560975%
+Epoch3 [4940/6250] Loss: 3.7123730182647705, Acc: 12.49746963562753%
+Epoch3 [4960/6250] Loss: 3.7121002674102783, Acc: 12.51008064516129%
+Epoch3 [4980/6250] Loss: 3.7125298976898193, Acc: 12.517570281124499%
+Epoch3 [5000/6250] Loss: 3.712700366973877, Acc: 12.507499999999999%
+Epoch3 [5020/6250] Loss: 3.7128143310546875, Acc: 12.495019920318725%
+Epoch3 [5040/6250] Loss: 3.713463544845581, Acc: 12.490079365079366%
+Epoch3 [5060/6250] Loss: 3.713242292404175, Acc: 12.5%
+Epoch3 [5080/6250] Loss: 3.7132036685943604, Acc: 12.50738188976378%
+Epoch3 [5100/6250] Loss: 3.7134056091308594, Acc: 12.504901960784315%
+Epoch3 [5120/6250] Loss: 3.712810516357422, Acc: 12.51220703125%
+Epoch3 [5140/6250] Loss: 3.7123286724090576, Acc: 12.51215953307393%
+Epoch3 [5160/6250] Loss: 3.7116622924804688, Acc: 12.526647286821705%
+Epoch3 [5180/6250] Loss: 3.711608648300171, Acc: 12.536196911196912%
+Epoch3 [5200/6250] Loss: 3.7114500999450684, Acc: 12.538461538461537%
+Epoch3 [5220/6250] Loss: 3.7106423377990723, Acc: 12.555076628352491%
+Epoch3 [5240/6250] Loss: 3.7104437351226807, Acc: 12.566793893129772%
+Epoch3 [5260/6250] Loss: 3.710172414779663, Acc: 12.573669201520913%
+Epoch3 [5280/6250] Loss: 3.7095720767974854, Acc: 12.608901515151516%
+Epoch3 [5300/6250] Loss: 3.709280252456665, Acc: 12.601415094339622%
+Epoch3 [5320/6250] Loss: 3.709496259689331, Acc: 12.593984962406015%
+Epoch3 [5340/6250] Loss: 3.709188461303711, Acc: 12.605337078651685%
+Epoch3 [5360/6250] Loss: 3.7092092037200928, Acc: 12.604944029850746%
+Epoch3 [5380/6250] Loss: 3.7087535858154297, Acc: 12.611524163568774%
+Epoch3 [5400/6250] Loss: 3.708804130554199, Acc: 12.599537037037036%
+Epoch3 [5420/6250] Loss: 3.708193302154541, Acc: 12.615313653136532%
+Epoch3 [5440/6250] Loss: 3.7084286212921143, Acc: 12.614889705882353%
+Epoch3 [5460/6250] Loss: 3.708574056625366, Acc: 12.607600732600732%
+Epoch3 [5480/6250] Loss: 3.70820689201355, Acc: 12.611770072992702%
+Epoch3 [5500/6250] Loss: 3.708854913711548, Acc: 12.59772727272727%
+Epoch3 [5520/6250] Loss: 3.708385467529297, Acc: 12.601902173913043%
+Epoch3 [5540/6250] Loss: 3.707991600036621, Acc: 12.608303249097471%
+Epoch3 [5560/6250] Loss: 3.707926034927368, Acc: 12.612410071942445%
+Epoch3 [5580/6250] Loss: 3.707697868347168, Acc: 12.603046594982079%
+Epoch3 [5600/6250] Loss: 3.707446575164795, Acc: 12.602678571428571%
+Epoch3 [5620/6250] Loss: 3.7070889472961426, Acc: 12.613434163701069%
+Epoch3 [5640/6250] Loss: 3.7066986560821533, Acc: 12.62854609929078%
+Epoch3 [5660/6250] Loss: 3.7071447372436523, Acc: 12.60821554770318%
+Epoch3 [5680/6250] Loss: 3.706599235534668, Acc: 12.621038732394366%
+Epoch3 [5700/6250] Loss: 3.706084728240967, Acc: 12.633771929824562%
+Epoch3 [5720/6250] Loss: 3.7062034606933594, Acc: 12.63111888111888%
+Epoch3 [5740/6250] Loss: 3.7062108516693115, Acc: 12.641550522648085%
+Epoch3 [5760/6250] Loss: 3.7064249515533447, Acc: 12.630208333333334%
+Epoch3 [5780/6250] Loss: 3.7065632343292236, Acc: 12.625432525951558%
+Epoch3 [5800/6250] Loss: 3.7060048580169678, Acc: 12.644396551724139%
+Epoch3 [5820/6250] Loss: 3.7068891525268555, Acc: 12.631013745704466%
+Epoch3 [5840/6250] Loss: 3.706496000289917, Acc: 12.651969178082192%
+Epoch3 [5860/6250] Loss: 3.7064568996429443, Acc: 12.6429180887372%
+Epoch3 [5880/6250] Loss: 3.7061941623687744, Acc: 12.642431972789115%
+Epoch3 [5900/6250] Loss: 3.70611572265625, Acc: 12.650423728813559%
+Epoch3 [5920/6250] Loss: 3.7062273025512695, Acc: 12.662584459459458%
+Epoch3 [5940/6250] Loss: 3.70562744140625, Acc: 12.678872053872054%
+Epoch3 [5960/6250] Loss: 3.705808401107788, Acc: 12.68246644295302%
+Epoch3 [5980/6250] Loss: 3.7057385444641113, Acc: 12.692307692307692%
+Epoch3 [6000/6250] Loss: 3.705235242843628, Acc: 12.693750000000001%
+Epoch3 [6020/6250] Loss: 3.7048778533935547, Acc: 12.697259136212624%
+Epoch3 [6040/6250] Loss: 3.70487117767334, Acc: 12.704884105960264%
+Epoch3 [6060/6250] Loss: 3.705497980117798, Acc: 12.681518151815183%
+Epoch3 [6080/6250] Loss: 3.7054495811462402, Acc: 12.676809210526315%
+Epoch3 [6100/6250] Loss: 3.7050068378448486, Acc: 12.688524590163935%
+Epoch3 [6120/6250] Loss: 3.704714298248291, Acc: 12.691993464052286%
+Epoch3 [6140/6250] Loss: 3.704437732696533, Acc: 12.69543973941368%
+Epoch3 [6160/6250] Loss: 3.704458475112915, Acc: 12.696834415584416%
+Epoch3 [6180/6250] Loss: 3.704267978668213, Acc: 12.698220064724918%
+Epoch3 [6200/6250] Loss: 3.7037131786346436, Acc: 12.713709677419354%
+Epoch3 [6220/6250] Loss: 3.7035293579101562, Acc: 12.711012861736334%
+Epoch3 [6240/6250] Loss: 3.703320026397705, Acc: 12.720352564102564%
+Epoch3_end: Wed Oct 27 13:06:38 2021
+Training Loss: 3.703202962875366, Training Acc: 12.726%
+[finished:40] Acc: 12.5%
+[finished:80] Acc: 15.0%
+[finished:120] Acc: 13.333333333333334%
+[finished:160] Acc: 13.750000000000002%
+[finished:200] Acc: 14.000000000000002%
+[finished:240] Acc: 13.750000000000002%
+[finished:280] Acc: 13.214285714285715%
+[finished:320] Acc: 12.812499999999998%
+[finished:360] Acc: 11.944444444444445%
+[finished:400] Acc: 12.25%
+[finished:440] Acc: 11.59090909090909%
+[finished:480] Acc: 11.666666666666666%
+[finished:520] Acc: 12.307692307692308%
+[finished:560] Acc: 12.5%
+[finished:600] Acc: 12.5%
+[finished:640] Acc: 12.03125%
+[finished:680] Acc: 12.205882352941176%
+[finished:720] Acc: 11.944444444444445%
+[finished:760] Acc: 12.368421052631579%
+[finished:800] Acc: 12.875%
+[finished:840] Acc: 13.095238095238097%
+[finished:880] Acc: 13.636363636363635%
+[finished:920] Acc: 13.478260869565217%
+[finished:960] Acc: 13.541666666666666%
+[finished:1000] Acc: 13.700000000000001%
+[finished:1040] Acc: 13.365384615384615%
+[finished:1080] Acc: 13.055555555555557%
+[finished:1120] Acc: 13.125%
+[finished:1160] Acc: 13.017241379310345%
+[finished:1200] Acc: 12.833333333333332%
+[finished:1240] Acc: 12.741935483870966%
+[finished:1280] Acc: 12.734375%
+[finished:1320] Acc: 12.803030303030303%
+[finished:1360] Acc: 12.941176470588237%
+[finished:1400] Acc: 13.142857142857142%
+[finished:1440] Acc: 13.055555555555557%
+[finished:1480] Acc: 12.972972972972974%
+[finished:1520] Acc: 12.894736842105264%
+[finished:1560] Acc: 12.94871794871795%
+[finished:1600] Acc: 13.0625%
+[finished:1640] Acc: 13.048780487804878%
+[finished:1680] Acc: 13.214285714285715%
+[finished:1720] Acc: 13.197674418604652%
+[finished:1760] Acc: 13.18181818181818%
+[finished:1800] Acc: 12.944444444444445%
+[finished:1840] Acc: 13.097826086956522%
+[finished:1880] Acc: 12.978723404255318%
+[finished:1920] Acc: 13.072916666666668%
+[finished:1960] Acc: 12.857142857142856%
+[finished:2000] Acc: 13.100000000000001%
+[finished:2040] Acc: 13.284313725490197%
+[finished:2080] Acc: 13.317307692307692%
+[finished:2120] Acc: 13.20754716981132%
+[finished:2160] Acc: 13.101851851851851%
+[finished:2200] Acc: 13.045454545454547%
+[finished:2240] Acc: 12.946428571428573%
+[finished:2280] Acc: 12.894736842105264%
+[finished:2320] Acc: 12.844827586206897%
+[finished:2360] Acc: 12.88135593220339%
+[finished:2400] Acc: 13.0%
+[finished:2440] Acc: 13.07377049180328%
+[finished:2480] Acc: 13.225806451612904%
+[finished:2520] Acc: 13.214285714285715%
+[finished:2560] Acc: 13.2421875%
+[finished:2600] Acc: 13.307692307692307%
+[finished:2640] Acc: 13.37121212121212%
+[finished:2680] Acc: 13.470149253731343%
+[finished:2720] Acc: 13.455882352941176%
+[finished:2760] Acc: 13.55072463768116%
+[finished:2800] Acc: 13.678571428571429%
+[finished:2840] Acc: 13.556338028169016%
+[finished:2880] Acc: 13.541666666666666%
+[finished:2920] Acc: 13.63013698630137%
+[finished:2960] Acc: 13.58108108108108%
+[finished:3000] Acc: 13.533333333333333%
+[finished:3040] Acc: 13.421052631578947%
+[finished:3080] Acc: 13.571428571428571%
+[finished:3120] Acc: 13.653846153846153%
+[finished:3160] Acc: 13.734177215189874%
+[finished:3200] Acc: 13.6875%
+[finished:3240] Acc: 13.67283950617284%
+[finished:3280] Acc: 13.689024390243903%
+[finished:3320] Acc: 13.674698795180722%
+[finished:3360] Acc: 13.779761904761905%
+[finished:3400] Acc: 13.73529411764706%
+[finished:3440] Acc: 13.750000000000002%
+[finished:3480] Acc: 13.879310344827585%
+[finished:3520] Acc: 13.920454545454545%
+[finished:3560] Acc: 14.016853932584269%
+[finished:3600] Acc: 14.083333333333334%
+[finished:3640] Acc: 14.093406593406593%
+[finished:3680] Acc: 14.103260869565219%
+[finished:3720] Acc: 14.032258064516128%
+[finished:3760] Acc: 14.01595744680851%
+[finished:3800] Acc: 14.078947368421051%
+[finished:3840] Acc: 14.166666666666666%
+[finished:3880] Acc: 14.04639175257732%
+[finished:3920] Acc: 14.056122448979592%
+[finished:3960] Acc: 14.116161616161616%
+[finished:4000] Acc: 14.2%
+[finished:4040] Acc: 14.232673267326732%
+[finished:4080] Acc: 14.240196078431373%
+[finished:4120] Acc: 14.199029126213592%
+[finished:4160] Acc: 14.23076923076923%
+[finished:4200] Acc: 14.214285714285715%
+[finished:4240] Acc: 14.339622641509434%
+[finished:4280] Acc: 14.462616822429908%
+[finished:4320] Acc: 14.467592592592593%
+[finished:4360] Acc: 14.403669724770642%
+[finished:4400] Acc: 14.386363636363637%
+[finished:4440] Acc: 14.45945945945946%
+[finished:4480] Acc: 14.441964285714285%
+[finished:4520] Acc: 14.402654867256636%
+[finished:4560] Acc: 14.385964912280702%
+[finished:4600] Acc: 14.43478260869565%
+[finished:4640] Acc: 14.374999999999998%
+[finished:4680] Acc: 14.358974358974358%
+[finished:4720] Acc: 14.34322033898305%
+[finished:4760] Acc: 14.432773109243696%
+[finished:4800] Acc: 14.4375%
+[finished:4840] Acc: 14.380165289256198%
+[finished:4880] Acc: 14.385245901639344%
+[finished:4920] Acc: 14.34959349593496%
+[finished:4960] Acc: 14.334677419354838%
+[finished:5000] Acc: 14.299999999999999%
+[finished:5040] Acc: 14.365079365079364%
+[finished:5080] Acc: 14.330708661417324%
+[finished:5120] Acc: 14.277343749999998%
+[finished:5160] Acc: 14.244186046511627%
+[finished:5200] Acc: 14.249999999999998%
+[finished:5240] Acc: 14.274809160305344%
+[finished:5280] Acc: 14.337121212121213%
+[finished:5320] Acc: 14.32330827067669%
+[finished:5360] Acc: 14.309701492537313%
+[finished:5400] Acc: 14.333333333333334%
+[finished:5440] Acc: 14.301470588235293%
+[finished:5480] Acc: 14.27007299270073%
+[finished:5520] Acc: 14.23913043478261%
+[finished:5560] Acc: 14.298561151079136%
+[finished:5600] Acc: 14.339285714285715%
+[finished:5640] Acc: 14.290780141843973%
+[finished:5680] Acc: 14.330985915492958%
+[finished:5720] Acc: 14.283216783216785%
+[finished:5760] Acc: 14.21875%
+[finished:5800] Acc: 14.206896551724139%
+[finished:5840] Acc: 14.195205479452056%
+[finished:5880] Acc: 14.251700680272108%
+[finished:5920] Acc: 14.206081081081082%
+[finished:5960] Acc: 14.144295302013424%
+[finished:6000] Acc: 14.149999999999999%
+[finished:6040] Acc: 14.172185430463577%
+[finished:6080] Acc: 14.161184210526315%
+[finished:6120] Acc: 14.183006535947712%
+[finished:6160] Acc: 14.139610389610391%
+[finished:6200] Acc: 14.129032258064516%
+[finished:6240] Acc: 14.198717948717949%
+[finished:6280] Acc: 14.26751592356688%
+[finished:6320] Acc: 14.303797468354432%
+[finished:6360] Acc: 14.323899371069182%
+[finished:6400] Acc: 14.3125%
+[finished:6440] Acc: 14.301242236024844%
+[finished:6480] Acc: 14.25925925925926%
+[finished:6520] Acc: 14.248466257668714%
+[finished:6560] Acc: 14.222560975609754%
+[finished:6600] Acc: 14.212121212121213%
+[finished:6640] Acc: 14.231927710843372%
+[finished:6680] Acc: 14.236526946107784%
+[finished:6720] Acc: 14.241071428571427%
+[finished:6760] Acc: 14.23076923076923%
+[finished:6800] Acc: 14.23529411764706%
+[finished:6840] Acc: 14.210526315789473%
+[finished:6880] Acc: 14.186046511627906%
+[finished:6920] Acc: 14.16184971098266%
+[finished:6960] Acc: 14.152298850574713%
+[finished:7000] Acc: 14.17142857142857%
+[finished:7040] Acc: 14.19034090909091%
+[finished:7080] Acc: 14.194915254237289%
+[finished:7120] Acc: 14.129213483146067%
+[finished:7160] Acc: 14.18994413407821%
+[finished:7200] Acc: 14.180555555555555%
+[finished:7240] Acc: 14.198895027624308%
+[finished:7280] Acc: 14.203296703296703%
+[finished:7320] Acc: 14.166666666666666%
+[finished:7360] Acc: 14.116847826086957%
+[finished:7400] Acc: 14.08108108108108%
+[finished:7440] Acc: 14.086021505376344%
+[finished:7480] Acc: 14.131016042780747%
+[finished:7520] Acc: 14.148936170212767%
+[finished:7560] Acc: 14.126984126984127%
+[finished:7600] Acc: 14.13157894736842%
+[finished:7640] Acc: 14.162303664921467%
+[finished:7680] Acc: 14.179687499999998%
+[finished:7720] Acc: 14.183937823834198%
+[finished:7760] Acc: 14.252577319587628%
+[finished:7800] Acc: 14.243589743589743%
+[finished:7840] Acc: 14.209183673469388%
+[finished:7880] Acc: 14.200507614213198%
+[finished:7920] Acc: 14.204545454545455%
+[finished:7960] Acc: 14.158291457286431%
+[finished:8000] Acc: 14.174999999999999%
+[finished:8040] Acc: 14.166666666666666%
+[finished:8080] Acc: 14.146039603960395%
+[finished:8120] Acc: 14.125615763546797%
+[finished:8160] Acc: 14.105392156862745%
+[finished:8200] Acc: 14.121951219512194%
+[finished:8240] Acc: 14.138349514563107%
+[finished:8280] Acc: 14.094202898550726%
+[finished:8320] Acc: 14.122596153846153%
+[finished:8360] Acc: 14.102870813397129%
+[finished:8400] Acc: 14.107142857142858%
+[finished:8440] Acc: 14.111374407582938%
+[finished:8480] Acc: 14.10377358490566%
+[finished:8520] Acc: 14.14319248826291%
+[finished:8560] Acc: 14.182242990654206%
+[finished:8600] Acc: 14.22093023255814%
+[finished:8640] Acc: 14.212962962962964%
+[finished:8680] Acc: 14.205069124423964%
+[finished:8720] Acc: 14.18577981651376%
+[finished:8760] Acc: 14.212328767123289%
+[finished:8800] Acc: 14.227272727272727%
+[finished:8840] Acc: 14.23076923076923%
+[finished:8880] Acc: 14.268018018018019%
+[finished:8920] Acc: 14.271300448430493%
+[finished:8960] Acc: 14.252232142857144%
+[finished:9000] Acc: 14.222222222222221%
+[finished:9040] Acc: 14.203539823008848%
+[finished:9080] Acc: 14.218061674008812%
+[finished:9120] Acc: 14.232456140350877%
+[finished:9160] Acc: 14.224890829694322%
+[finished:9200] Acc: 14.206521739130434%
+[finished:9240] Acc: 14.1991341991342%
+[finished:9280] Acc: 14.15948275862069%
+[finished:9320] Acc: 14.173819742489272%
+[finished:9360] Acc: 14.166666666666666%
+[finished:9400] Acc: 14.212765957446807%
+[finished:9440] Acc: 14.184322033898306%
+[finished:9480] Acc: 14.166666666666666%
+[finished:9520] Acc: 14.149159663865547%
+[finished:9560] Acc: 14.205020920502093%
+[finished:9600] Acc: 14.1875%
+[finished:9640] Acc: 14.1701244813278%
+[finished:9680] Acc: 14.225206611570249%
+[finished:9720] Acc: 14.228395061728394%
+[finished:9760] Acc: 14.211065573770492%
+[finished:9800] Acc: 14.234693877551022%
+[finished:9840] Acc: 14.20731707317073%
+[finished:9880] Acc: 14.210526315789473%
+[finished:9920] Acc: 14.203629032258064%
+[finished:9960] Acc: 14.257028112449799%
+[finished:10000] Acc: 14.24%
+Validated on 10000 Images, Accuracy: 14.24%
+[tensor(4.1977, device='cuda:0', grad_fn=<DivBackward0>), tensor(3.8537, device='cuda:0', grad_fn=<DivBackward0>), tensor(3.7032, device='cuda:0', grad_fn=<DivBackward0>)]
+[5.94, 10.14, 12.726]
+[7.23, 12.09, 14.24]
+Saving:
+Checkpoint Saved to '../save/pretrain_cifar100/Max3acc_14.24.pth'
+
+Epoch4_start: Wed Oct 27 13:08:00 2021
+Epoch4 [20/6250] Loss: 3.563894033432007, Acc: 13.125%
+Epoch4 [40/6250] Loss: 3.628588914871216, Acc: 13.4375%
+Epoch4 [60/6250] Loss: 3.6070539951324463, Acc: 14.374999999999998%
+Epoch4 [80/6250] Loss: 3.6513969898223877, Acc: 12.968750000000002%
+Epoch4 [100/6250] Loss: 3.6414713859558105, Acc: 13.625000000000002%
+Epoch4 [120/6250] Loss: 3.648381233215332, Acc: 13.4375%
+Epoch4 [140/6250] Loss: 3.634833574295044, Acc: 13.928571428571429%
+Epoch4 [160/6250] Loss: 3.6148133277893066, Acc: 14.140625000000002%
+Epoch4 [180/6250] Loss: 3.6159560680389404, Acc: 14.097222222222221%
+Epoch4 [200/6250] Loss: 3.640079975128174, Acc: 13.750000000000002%
+Epoch4 [220/6250] Loss: 3.6503384113311768, Acc: 13.295454545454547%
+Epoch4 [240/6250] Loss: 3.6612789630889893, Acc: 13.229166666666666%
+Epoch4 [260/6250] Loss: 3.6738083362579346, Acc: 12.980769230769232%
+Epoch4 [280/6250] Loss: 3.665428400039673, Acc: 13.4375%
+Epoch4 [300/6250] Loss: 3.648658514022827, Acc: 13.458333333333334%
+Epoch4 [320/6250] Loss: 3.643202304840088, Acc: 13.4765625%
+Epoch4 [340/6250] Loss: 3.641820192337036, Acc: 13.345588235294118%
+Epoch4 [360/6250] Loss: 3.6401259899139404, Acc: 13.472222222222221%
+Epoch4 [380/6250] Loss: 3.6493072509765625, Acc: 13.125%
+Epoch4 [400/6250] Loss: 3.6474175453186035, Acc: 13.25%
+Epoch4 [420/6250] Loss: 3.6510932445526123, Acc: 13.154761904761905%
+Epoch4 [440/6250] Loss: 3.6476292610168457, Acc: 13.238636363636363%
+Epoch4 [460/6250] Loss: 3.650552749633789, Acc: 13.152173913043477%
+Epoch4 [480/6250] Loss: 3.648597478866577, Acc: 13.203124999999998%
+Epoch4 [500/6250] Loss: 3.6516740322113037, Acc: 13.350000000000001%
+Epoch4 [520/6250] Loss: 3.6543352603912354, Acc: 13.317307692307692%
+Epoch4 [540/6250] Loss: 3.6570518016815186, Acc: 13.26388888888889%
+Epoch4 [560/6250] Loss: 3.6547346115112305, Acc: 13.348214285714285%
+Epoch4 [580/6250] Loss: 3.6617839336395264, Acc: 13.297413793103448%
+Epoch4 [600/6250] Loss: 3.6597652435302734, Acc: 13.354166666666668%
+Epoch4 [620/6250] Loss: 3.662118434906006, Acc: 13.286290322580646%
+Epoch4 [640/6250] Loss: 3.663602828979492, Acc: 13.22265625%
+Epoch4 [660/6250] Loss: 3.6576037406921387, Acc: 13.352272727272727%
+Epoch4 [680/6250] Loss: 3.6570346355438232, Acc: 13.419117647058822%
+Epoch4 [700/6250] Loss: 3.6617002487182617, Acc: 13.357142857142856%
+Epoch4 [720/6250] Loss: 3.6605658531188965, Acc: 13.368055555555555%
+Epoch4 [740/6250] Loss: 3.6641926765441895, Acc: 13.293918918918918%
+Epoch4 [760/6250] Loss: 3.6650426387786865, Acc: 13.273026315789474%
+Epoch4 [780/6250] Loss: 3.6651735305786133, Acc: 13.253205128205128%
+Epoch4 [800/6250] Loss: 3.668424367904663, Acc: 13.28125%
+Epoch4 [820/6250] Loss: 3.670316457748413, Acc: 13.26219512195122%
+Epoch4 [840/6250] Loss: 3.673804998397827, Acc: 13.18452380952381%
+Epoch4 [860/6250] Loss: 3.668482542037964, Acc: 13.197674418604652%
+Epoch4 [880/6250] Loss: 3.665506362915039, Acc: 13.196022727272727%
+Epoch4 [900/6250] Loss: 3.663331985473633, Acc: 13.291666666666666%
+Epoch4 [920/6250] Loss: 3.663466691970825, Acc: 13.28804347826087%
+Epoch4 [940/6250] Loss: 3.6618714332580566, Acc: 13.364361702127658%
+Epoch4 [960/6250] Loss: 3.6662590503692627, Acc: 13.333333333333334%
+Epoch4 [980/6250] Loss: 3.665907621383667, Acc: 13.316326530612244%
+Epoch4 [1000/6250] Loss: 3.6663060188293457, Acc: 13.337499999999999%
+Epoch4 [1020/6250] Loss: 3.6676535606384277, Acc: 13.308823529411764%
+Epoch4 [1040/6250] Loss: 3.6653897762298584, Acc: 13.329326923076923%
+Epoch4 [1060/6250] Loss: 3.6652207374572754, Acc: 13.278301886792454%
+Epoch4 [1080/6250] Loss: 3.6659154891967773, Acc: 13.206018518518519%
+Epoch4 [1100/6250] Loss: 3.6647136211395264, Acc: 13.25%
+Epoch4 [1120/6250] Loss: 3.663961887359619, Acc: 13.314732142857144%
+Epoch4 [1140/6250] Loss: 3.662008047103882, Acc: 13.344298245614036%
+Epoch4 [1160/6250] Loss: 3.6600472927093506, Acc: 13.426724137931034%
+Epoch4 [1180/6250] Loss: 3.655905246734619, Acc: 13.50635593220339%
+Epoch4 [1200/6250] Loss: 3.6557672023773193, Acc: 13.510416666666666%
+Epoch4 [1220/6250] Loss: 3.655501127243042, Acc: 13.514344262295083%
+Epoch4 [1240/6250] Loss: 3.656043291091919, Acc: 13.508064516129032%
+Epoch4 [1260/6250] Loss: 3.654750347137451, Acc: 13.5515873015873%
+Epoch4 [1280/6250] Loss: 3.652763843536377, Acc: 13.583984375%
+Epoch4 [1300/6250] Loss: 3.6551833152770996, Acc: 13.576923076923078%
+Epoch4 [1320/6250] Loss: 3.6510603427886963, Acc: 13.62689393939394%
+Epoch4 [1340/6250] Loss: 3.6519582271575928, Acc: 13.619402985074627%
+Epoch4 [1360/6250] Loss: 3.652259349822998, Acc: 13.612132352941176%
+Epoch4 [1380/6250] Loss: 3.6522228717803955, Acc: 13.586956521739129%
+Epoch4 [1400/6250] Loss: 3.651203155517578, Acc: 13.580357142857144%
+Epoch4 [1420/6250] Loss: 3.649404287338257, Acc: 13.626760563380284%
+Epoch4 [1440/6250] Loss: 3.6483993530273438, Acc: 13.593749999999998%
+Epoch4 [1460/6250] Loss: 3.6483428478240967, Acc: 13.638698630136986%
+Epoch4 [1480/6250] Loss: 3.6479156017303467, Acc: 13.631756756756758%
+Epoch4 [1500/6250] Loss: 3.6473336219787598, Acc: 13.608333333333334%
+Epoch4 [1520/6250] Loss: 3.6478404998779297, Acc: 13.610197368421053%
+Epoch4 [1540/6250] Loss: 3.646515369415283, Acc: 13.612012987012987%
+Epoch4 [1560/6250] Loss: 3.648664951324463, Acc: 13.557692307692307%
+Epoch4 [1580/6250] Loss: 3.647653102874756, Acc: 13.575949367088608%
+Epoch4 [1600/6250] Loss: 3.6485469341278076, Acc: 13.593749999999998%
+Epoch4 [1620/6250] Loss: 3.647695541381836, Acc: 13.603395061728396%
+Epoch4 [1640/6250] Loss: 3.6463170051574707, Acc: 13.64329268292683%
+Epoch4 [1660/6250] Loss: 3.6439642906188965, Acc: 13.667168674698797%
+Epoch4 [1680/6250] Loss: 3.646483898162842, Acc: 13.660714285714285%
+Epoch4 [1700/6250] Loss: 3.6459529399871826, Acc: 13.705882352941176%
+Epoch4 [1720/6250] Loss: 3.6478185653686523, Acc: 13.706395348837209%
+Epoch4 [1740/6250] Loss: 3.6481499671936035, Acc: 13.742816091954024%
+Epoch4 [1760/6250] Loss: 3.6491634845733643, Acc: 13.750000000000002%
+Epoch4 [1780/6250] Loss: 3.648545980453491, Acc: 13.799157303370787%
+Epoch4 [1800/6250] Loss: 3.646650552749634, Acc: 13.791666666666666%
+Epoch4 [1820/6250] Loss: 3.6478538513183594, Acc: 13.715659340659341%
+Epoch4 [1840/6250] Loss: 3.6464738845825195, Acc: 13.722826086956522%
+Epoch4 [1860/6250] Loss: 3.6441831588745117, Acc: 13.783602150537636%
+Epoch4 [1880/6250] Loss: 3.643953561782837, Acc: 13.769946808510639%
+Epoch4 [1900/6250] Loss: 3.644388437271118, Acc: 13.776315789473683%
+Epoch4 [1920/6250] Loss: 3.642085552215576, Acc: 13.841145833333332%
+Epoch4 [1940/6250] Loss: 3.640310049057007, Acc: 13.846649484536083%
+Epoch4 [1960/6250] Loss: 3.6398110389709473, Acc: 13.85204081632653%
+Epoch4 [1980/6250] Loss: 3.6422617435455322, Acc: 13.79419191919192%
+Epoch4 [2000/6250] Loss: 3.6422317028045654, Acc: 13.8%
+Epoch4 [2020/6250] Loss: 3.6446337699890137, Acc: 13.780940594059407%
+Epoch4 [2040/6250] Loss: 3.645019769668579, Acc: 13.780637254901961%
+Epoch4 [2060/6250] Loss: 3.644087791442871, Acc: 13.78640776699029%
+Epoch4 [2080/6250] Loss: 3.6434743404388428, Acc: 13.816105769230768%
+Epoch4 [2100/6250] Loss: 3.6427555084228516, Acc: 13.845238095238097%
+Epoch4 [2120/6250] Loss: 3.6413276195526123, Acc: 13.838443396226415%
+Epoch4 [2140/6250] Loss: 3.641329050064087, Acc: 13.79088785046729%
+Epoch4 [2160/6250] Loss: 3.640979290008545, Acc: 13.79050925925926%
+Epoch4 [2180/6250] Loss: 3.6413516998291016, Acc: 13.795871559633028%
+Epoch4 [2200/6250] Loss: 3.638402223587036, Acc: 13.835227272727273%
+Epoch4 [2220/6250] Loss: 3.637706995010376, Acc: 13.913288288288289%
+Epoch4 [2240/6250] Loss: 3.6362314224243164, Acc: 13.911830357142858%
+Epoch4 [2260/6250] Loss: 3.636671543121338, Acc: 13.89933628318584%
+Epoch4 [2280/6250] Loss: 3.637211322784424, Acc: 13.914473684210527%
+Epoch4 [2300/6250] Loss: 3.636843204498291, Acc: 13.923913043478262%
+Epoch4 [2320/6250] Loss: 3.6360106468200684, Acc: 13.970905172413794%
+Epoch4 [2340/6250] Loss: 3.6345882415771484, Acc: 13.979700854700855%
+Epoch4 [2360/6250] Loss: 3.634193181991577, Acc: 13.930084745762711%
+Epoch4 [2380/6250] Loss: 3.634754180908203, Acc: 13.918067226890757%
+Epoch4 [2400/6250] Loss: 3.634145498275757, Acc: 13.90625%
+Epoch4 [2420/6250] Loss: 3.6336398124694824, Acc: 13.904958677685949%
+Epoch4 [2440/6250] Loss: 3.632746458053589, Acc: 13.939549180327868%
+Epoch4 [2460/6250] Loss: 3.633445978164673, Acc: 13.9380081300813%
+Epoch4 [2480/6250] Loss: 3.6354384422302246, Acc: 13.886088709677418%
+Epoch4 [2500/6250] Loss: 3.6372230052948, Acc: 13.850000000000001%
+Epoch4 [2520/6250] Loss: 3.6353349685668945, Acc: 13.893849206349207%
+Epoch4 [2540/6250] Loss: 3.6349635124206543, Acc: 13.89763779527559%
+Epoch4 [2560/6250] Loss: 3.6339783668518066, Acc: 13.911132812499998%
+Epoch4 [2580/6250] Loss: 3.633798599243164, Acc: 13.900193798449612%
+Epoch4 [2600/6250] Loss: 3.6343204975128174, Acc: 13.899038461538463%
+Epoch4 [2620/6250] Loss: 3.6328907012939453, Acc: 13.950381679389313%
+Epoch4 [2640/6250] Loss: 3.6326940059661865, Acc: 13.97253787878788%
+Epoch4 [2660/6250] Loss: 3.632734775543213, Acc: 13.966165413533835%
+Epoch4 [2680/6250] Loss: 3.6342105865478516, Acc: 13.927238805970148%
+Epoch4 [2700/6250] Loss: 3.6356287002563477, Acc: 13.916666666666666%
+Epoch4 [2720/6250] Loss: 3.635544538497925, Acc: 13.924632352941178%
+Epoch4 [2740/6250] Loss: 3.636815309524536, Acc: 13.914233576642335%
+Epoch4 [2760/6250] Loss: 3.6383492946624756, Acc: 13.903985507246377%
+Epoch4 [2780/6250] Loss: 3.638479709625244, Acc: 13.934352517985612%
+Epoch4 [2800/6250] Loss: 3.638085126876831, Acc: 13.928571428571429%
+Epoch4 [2820/6250] Loss: 3.639087200164795, Acc: 13.891843971631207%
+Epoch4 [2840/6250] Loss: 3.639117479324341, Acc: 13.851232394366198%
+Epoch4 [2860/6250] Loss: 3.639784574508667, Acc: 13.833041958041958%
+Epoch4 [2880/6250] Loss: 3.639631509780884, Acc: 13.841145833333332%
+Epoch4 [2900/6250] Loss: 3.640841245651245, Acc: 13.827586206896553%
+Epoch4 [2920/6250] Loss: 3.640451431274414, Acc: 13.809931506849315%
+Epoch4 [2940/6250] Loss: 3.639674663543701, Acc: 13.835034013605444%
+Epoch4 [2960/6250] Loss: 3.639333724975586, Acc: 13.842905405405407%
+Epoch4 [2980/6250] Loss: 3.6388604640960693, Acc: 13.842281879194632%
+Epoch4 [3000/6250] Loss: 3.6379878520965576, Acc: 13.8625%
+Epoch4 [3020/6250] Loss: 3.637646198272705, Acc: 13.874172185430464%
+Epoch4 [3040/6250] Loss: 3.6380481719970703, Acc: 13.869243421052632%
+Epoch4 [3060/6250] Loss: 3.638701915740967, Acc: 13.815359477124185%
+Epoch4 [3080/6250] Loss: 3.6387150287628174, Acc: 13.810876623376622%
+Epoch4 [3100/6250] Loss: 3.6384594440460205, Acc: 13.818548387096774%
+Epoch4 [3120/6250] Loss: 3.638350486755371, Acc: 13.822115384615385%
+Epoch4 [3140/6250] Loss: 3.639112710952759, Acc: 13.809713375796179%
+Epoch4 [3160/6250] Loss: 3.637617349624634, Acc: 13.840981012658226%
+Epoch4 [3180/6250] Loss: 3.6370973587036133, Acc: 13.856132075471697%
+Epoch4 [3200/6250] Loss: 3.635423183441162, Acc: 13.91015625%
+Epoch4 [3220/6250] Loss: 3.6343414783477783, Acc: 13.91304347826087%
+Epoch4 [3240/6250] Loss: 3.6339199542999268, Acc: 13.939043209876543%
+Epoch4 [3260/6250] Loss: 3.633661985397339, Acc: 13.960889570552148%
+Epoch4 [3280/6250] Loss: 3.6335017681121826, Acc: 13.940548780487806%
+Epoch4 [3300/6250] Loss: 3.6342666149139404, Acc: 13.912878787878787%
+Epoch4 [3320/6250] Loss: 3.6330761909484863, Acc: 13.942018072289155%
+Epoch4 [3340/6250] Loss: 3.6325366497039795, Acc: 13.952095808383232%
+Epoch4 [3360/6250] Loss: 3.6316559314727783, Acc: 13.984374999999998%
+Epoch4 [3380/6250] Loss: 3.6294779777526855, Acc: 14.016272189349113%
+Epoch4 [3400/6250] Loss: 3.628652811050415, Acc: 13.996323529411764%
+Epoch4 [3420/6250] Loss: 3.627575635910034, Acc: 14.046052631578949%
+Epoch4 [3440/6250] Loss: 3.6262295246124268, Acc: 14.026162790697674%
+Epoch4 [3460/6250] Loss: 3.624695062637329, Acc: 14.042630057803468%
+Epoch4 [3480/6250] Loss: 3.6240458488464355, Acc: 14.076867816091953%
+Epoch4 [3500/6250] Loss: 3.623605489730835, Acc: 14.064285714285715%
+Epoch4 [3520/6250] Loss: 3.6231210231781006, Acc: 14.094460227272727%
+Epoch4 [3540/6250] Loss: 3.621943712234497, Acc: 14.110169491525424%
+Epoch4 [3560/6250] Loss: 3.6208438873291016, Acc: 14.136235955056181%
+Epoch4 [3580/6250] Loss: 3.621333360671997, Acc: 14.120111731843576%
+Epoch4 [3600/6250] Loss: 3.621122360229492, Acc: 14.121527777777779%
+Epoch4 [3620/6250] Loss: 3.6204755306243896, Acc: 14.133287292817679%
+Epoch4 [3640/6250] Loss: 3.6207714080810547, Acc: 14.117445054945055%
+Epoch4 [3660/6250] Loss: 3.6212849617004395, Acc: 14.101775956284154%
+Epoch4 [3680/6250] Loss: 3.6219658851623535, Acc: 14.072690217391305%
+Epoch4 [3700/6250] Loss: 3.621675491333008, Acc: 14.08108108108108%
+Epoch4 [3720/6250] Loss: 3.6210429668426514, Acc: 14.089381720430108%
+Epoch4 [3740/6250] Loss: 3.6197383403778076, Acc: 14.097593582887699%
+Epoch4 [3760/6250] Loss: 3.620795488357544, Acc: 14.075797872340425%
+Epoch4 [3780/6250] Loss: 3.619614839553833, Acc: 14.107142857142858%
+Epoch4 [3800/6250] Loss: 3.61980938911438, Acc: 14.105263157894738%
+Epoch4 [3820/6250] Loss: 3.6190388202667236, Acc: 14.113219895287957%
+Epoch4 [3840/6250] Loss: 3.6198160648345947, Acc: 14.069010416666666%
+Epoch4 [3860/6250] Loss: 3.619598388671875, Acc: 14.073834196891191%
+Epoch4 [3880/6250] Loss: 3.6194522380828857, Acc: 14.065721649484535%
+Epoch4 [3900/6250] Loss: 3.619163990020752, Acc: 14.086538461538462%
+Epoch4 [3920/6250] Loss: 3.619508743286133, Acc: 14.075255102040815%
+Epoch4 [3940/6250] Loss: 3.6193349361419678, Acc: 14.08312182741117%
+Epoch4 [3960/6250] Loss: 3.6180338859558105, Acc: 14.100378787878787%
+Epoch4 [3980/6250] Loss: 3.616576910018921, Acc: 14.117462311557787%
+Epoch4 [4000/6250] Loss: 3.616931915283203, Acc: 14.115625000000001%
+Epoch4 [4020/6250] Loss: 3.61690354347229, Acc: 14.110696517412935%
+Epoch4 [4040/6250] Loss: 3.616499662399292, Acc: 14.124381188118813%
+Epoch4 [4060/6250] Loss: 3.6166210174560547, Acc: 14.144088669950738%
+Epoch4 [4080/6250] Loss: 3.616316556930542, Acc: 14.157475490196077%
+Epoch4 [4100/6250] Loss: 3.616459846496582, Acc: 14.155487804878048%
+Epoch4 [4120/6250] Loss: 3.6158530712127686, Acc: 14.156553398058252%
+Epoch4 [4140/6250] Loss: 3.616375684738159, Acc: 14.145531400966183%
+Epoch4 [4160/6250] Loss: 3.6155943870544434, Acc: 14.155649038461537%
+Epoch4 [4180/6250] Loss: 3.6154797077178955, Acc: 14.153708133971291%
+Epoch4 [4200/6250] Loss: 3.615283966064453, Acc: 14.169642857142858%
+Epoch4 [4220/6250] Loss: 3.615786552429199, Acc: 14.140995260663509%
+Epoch4 [4240/6250] Loss: 3.6159629821777344, Acc: 14.150943396226415%
+Epoch4 [4260/6250] Loss: 3.6162140369415283, Acc: 14.172535211267606%
+Epoch4 [4280/6250] Loss: 3.6166036128997803, Acc: 14.153037383177569%
+Epoch4 [4300/6250] Loss: 3.61662220954895, Acc: 14.145348837209301%
+Epoch4 [4320/6250] Loss: 3.616405963897705, Acc: 14.137731481481481%
+Epoch4 [4340/6250] Loss: 3.6160194873809814, Acc: 14.12730414746544%
+Epoch4 [4360/6250] Loss: 3.6159143447875977, Acc: 14.12270642201835%
+Epoch4 [4380/6250] Loss: 3.6166889667510986, Acc: 14.103881278538813%
+Epoch4 [4400/6250] Loss: 3.617220640182495, Acc: 14.079545454545455%
+Epoch4 [4420/6250] Loss: 3.6172702312469482, Acc: 14.069570135746606%
+Epoch4 [4440/6250] Loss: 3.616375207901001, Acc: 14.085022522522522%
+Epoch4 [4460/6250] Loss: 3.616098403930664, Acc: 14.089125560538115%
+Epoch4 [4480/6250] Loss: 3.616600751876831, Acc: 14.090401785714285%
+Epoch4 [4500/6250] Loss: 3.616123676300049, Acc: 14.099999999999998%
+Epoch4 [4520/6250] Loss: 3.615856647491455, Acc: 14.092920353982302%
+Epoch4 [4540/6250] Loss: 3.6154870986938477, Acc: 14.08590308370044%
+Epoch4 [4560/6250] Loss: 3.615401029586792, Acc: 14.087171052631579%
+Epoch4 [4580/6250] Loss: 3.616208791732788, Acc: 14.074781659388647%
+Epoch4 [4600/6250] Loss: 3.6158666610717773, Acc: 14.08695652173913%
+Epoch4 [4620/6250] Loss: 3.615525722503662, Acc: 14.099025974025976%
+Epoch4 [4640/6250] Loss: 3.6147396564483643, Acc: 14.102909482758621%
+Epoch4 [4660/6250] Loss: 3.6148107051849365, Acc: 14.112124463519313%
+Epoch4 [4680/6250] Loss: 3.613779067993164, Acc: 14.123931623931623%
+Epoch4 [4700/6250] Loss: 3.6134989261627197, Acc: 14.124999999999998%
+Epoch4 [4720/6250] Loss: 3.6132802963256836, Acc: 14.11281779661017%
+Epoch4 [4740/6250] Loss: 3.6135776042938232, Acc: 14.106012658227849%
+Epoch4 [4760/6250] Loss: 3.6138417720794678, Acc: 14.104516806722689%
+Epoch4 [4780/6250] Loss: 3.6133811473846436, Acc: 14.116108786610878%
+Epoch4 [4800/6250] Loss: 3.613426685333252, Acc: 14.119791666666668%
+Epoch4 [4820/6250] Loss: 3.6132278442382812, Acc: 14.113070539419088%
+Epoch4 [4840/6250] Loss: 3.6138861179351807, Acc: 14.101239669421487%
+Epoch4 [4860/6250] Loss: 3.6133322715759277, Acc: 14.094650205761317%
+Epoch4 [4880/6250] Loss: 3.613245725631714, Acc: 14.100922131147541%
+Epoch4 [4900/6250] Loss: 3.6126091480255127, Acc: 14.099489795918368%
+Epoch4 [4920/6250] Loss: 3.613781690597534, Acc: 14.087906504065039%
+Epoch4 [4940/6250] Loss: 3.613729953765869, Acc: 14.10172064777328%
+Epoch4 [4960/6250] Loss: 3.6133060455322266, Acc: 14.117943548387096%
+Epoch4 [4980/6250] Loss: 3.6136221885681152, Acc: 14.131526104417672%
+Epoch4 [5000/6250] Loss: 3.6137237548828125, Acc: 14.122499999999999%
+Epoch4 [5020/6250] Loss: 3.614142656326294, Acc: 14.118525896414344%
+Epoch4 [5040/6250] Loss: 3.6148605346679688, Acc: 14.112103174603174%
+Epoch4 [5060/6250] Loss: 3.6145050525665283, Acc: 14.115612648221344%
+Epoch4 [5080/6250] Loss: 3.614443778991699, Acc: 14.119094488188978%
+Epoch4 [5100/6250] Loss: 3.614694833755493, Acc: 14.124999999999998%
+Epoch4 [5120/6250] Loss: 3.614156484603882, Acc: 14.12353515625%
+Epoch4 [5140/6250] Loss: 3.6135661602020264, Acc: 14.1318093385214%
+Epoch4 [5160/6250] Loss: 3.6131908893585205, Acc: 14.147286821705427%
+Epoch4 [5180/6250] Loss: 3.6130881309509277, Acc: 14.152992277992277%
+Epoch4 [5200/6250] Loss: 3.612884998321533, Acc: 14.161057692307693%
+Epoch4 [5220/6250] Loss: 3.612316846847534, Acc: 14.173850574712644%
+Epoch4 [5240/6250] Loss: 3.6123952865600586, Acc: 14.186545801526718%
+Epoch4 [5260/6250] Loss: 3.612246036529541, Acc: 14.184885931558936%
+Epoch4 [5280/6250] Loss: 3.6114425659179688, Acc: 14.206912878787877%
+Epoch4 [5300/6250] Loss: 3.6112287044525146, Acc: 14.19811320754717%
+Epoch4 [5320/6250] Loss: 3.611680507659912, Acc: 14.182330827067668%
+Epoch4 [5340/6250] Loss: 3.611692190170288, Acc: 14.197097378277155%
+Epoch4 [5360/6250] Loss: 3.611699104309082, Acc: 14.197761194029852%
+Epoch4 [5380/6250] Loss: 3.6114723682403564, Acc: 14.20539033457249%
+Epoch4 [5400/6250] Loss: 3.6118547916412354, Acc: 14.203703703703704%
+Epoch4 [5420/6250] Loss: 3.611558675765991, Acc: 14.208948339483396%
+Epoch4 [5440/6250] Loss: 3.6119608879089355, Acc: 14.202665441176471%
+Epoch4 [5460/6250] Loss: 3.612473487854004, Acc: 14.194139194139193%
+Epoch4 [5480/6250] Loss: 3.6122424602508545, Acc: 14.194799270072991%
+Epoch4 [5500/6250] Loss: 3.613222599029541, Acc: 14.172727272727274%
+Epoch4 [5520/6250] Loss: 3.613103151321411, Acc: 14.16213768115942%
+Epoch4 [5540/6250] Loss: 3.6127471923828125, Acc: 14.171931407942237%
+Epoch4 [5560/6250] Loss: 3.612626314163208, Acc: 14.177158273381297%
+Epoch4 [5580/6250] Loss: 3.612175464630127, Acc: 14.182347670250897%
+Epoch4 [5600/6250] Loss: 3.6122243404388428, Acc: 14.174107142857142%
+Epoch4 [5620/6250] Loss: 3.6120450496673584, Acc: 14.179270462633454%
+Epoch4 [5640/6250] Loss: 3.6118619441986084, Acc: 14.19104609929078%
+Epoch4 [5660/6250] Loss: 3.6124653816223145, Acc: 14.162985865724382%
+Epoch4 [5680/6250] Loss: 3.6117324829101562, Acc: 14.185739436619718%
+Epoch4 [5700/6250] Loss: 3.611250877380371, Acc: 14.192982456140351%
+Epoch4 [5720/6250] Loss: 3.611208438873291, Acc: 14.195804195804197%
+Epoch4 [5740/6250] Loss: 3.6111035346984863, Acc: 14.200783972125436%
+Epoch4 [5760/6250] Loss: 3.611295700073242, Acc: 14.205729166666666%
+Epoch4 [5780/6250] Loss: 3.611525297164917, Acc: 14.206314878892734%
+Epoch4 [5800/6250] Loss: 3.610856056213379, Acc: 14.215517241379311%
+Epoch4 [5820/6250] Loss: 3.61179780960083, Acc: 14.198883161512027%
+Epoch4 [5840/6250] Loss: 3.611377477645874, Acc: 14.216609589041095%
+Epoch4 [5860/6250] Loss: 3.611628293991089, Acc: 14.217150170648466%
+Epoch4 [5880/6250] Loss: 3.611433744430542, Acc: 14.228316326530614%
+Epoch4 [5900/6250] Loss: 3.6117453575134277, Acc: 14.21822033898305%
+Epoch4 [5920/6250] Loss: 3.6115336418151855, Acc: 14.233530405405407%
+Epoch4 [5940/6250] Loss: 3.6109390258789062, Acc: 14.26557239057239%
+Epoch4 [5960/6250] Loss: 3.611062526702881, Acc: 14.263842281879194%
+Epoch4 [5980/6250] Loss: 3.6107258796691895, Acc: 14.283026755852843%
+Epoch4 [6000/6250] Loss: 3.610266923904419, Acc: 14.289583333333333%
+Epoch4 [6020/6250] Loss: 3.610196590423584, Acc: 14.302325581395348%
+Epoch4 [6040/6250] Loss: 3.609980821609497, Acc: 14.310844370860929%
+Epoch4 [6060/6250] Loss: 3.610633134841919, Acc: 14.29042904290429%
+Epoch4 [6080/6250] Loss: 3.611098051071167, Acc: 14.28453947368421%
+Epoch4 [6100/6250] Loss: 3.611063241958618, Acc: 14.288934426229508%
+Epoch4 [6120/6250] Loss: 3.610717296600342, Acc: 14.297385620915032%
+Epoch4 [6140/6250] Loss: 3.6109097003936768, Acc: 14.30985342019544%
+Epoch4 [6160/6250] Loss: 3.611361026763916, Acc: 14.301948051948052%
+Epoch4 [6180/6250] Loss: 3.6114084720611572, Acc: 14.3042071197411%
+Epoch4 [6200/6250] Loss: 3.611093521118164, Acc: 14.310483870967742%
+Epoch4 [6220/6250] Loss: 3.611064910888672, Acc: 14.30466237942122%
+Epoch4 [6240/6250] Loss: 3.610708236694336, Acc: 14.316907051282051%
+Epoch4_end: Wed Oct 27 13:28:15 2021
+Training Loss: 3.61053204536438, Training Acc: 14.32%
+[finished:40] Acc: 15.0%
+[finished:80] Acc: 16.25%
+[finished:120] Acc: 18.333333333333332%
+[finished:160] Acc: 20.0%
+[finished:200] Acc: 19.0%
+[finished:240] Acc: 18.333333333333332%
+[finished:280] Acc: 16.785714285714285%
+[finished:320] Acc: 16.5625%
+[finished:360] Acc: 16.11111111111111%
+[finished:400] Acc: 16.5%
+[finished:440] Acc: 15.454545454545453%
+[finished:480] Acc: 14.583333333333334%
+[finished:520] Acc: 14.423076923076922%
+[finished:560] Acc: 14.107142857142858%
+[finished:600] Acc: 13.833333333333334%
+[finished:640] Acc: 13.593749999999998%
+[finished:680] Acc: 13.676470588235295%
+[finished:720] Acc: 13.61111111111111%
+[finished:760] Acc: 13.684210526315791%
+[finished:800] Acc: 14.374999999999998%
+[finished:840] Acc: 14.523809523809526%
+[finished:880] Acc: 15.568181818181817%
+[finished:920] Acc: 15.65217391304348%
+[finished:960] Acc: 15.833333333333332%
+[finished:1000] Acc: 16.3%
+[finished:1040] Acc: 16.05769230769231%
+[finished:1080] Acc: 15.74074074074074%
+[finished:1120] Acc: 15.982142857142856%
+[finished:1160] Acc: 16.206896551724135%
+[finished:1200] Acc: 16.25%
+[finished:1240] Acc: 15.96774193548387%
+[finished:1280] Acc: 15.937499999999998%
+[finished:1320] Acc: 15.909090909090908%
+[finished:1360] Acc: 15.955882352941176%
+[finished:1400] Acc: 15.928571428571429%
+[finished:1440] Acc: 15.76388888888889%
+[finished:1480] Acc: 15.945945945945947%
+[finished:1520] Acc: 15.855263157894736%
+[finished:1560] Acc: 15.833333333333332%
+[finished:1600] Acc: 15.875%
+[finished:1640] Acc: 15.792682926829269%
+[finished:1680] Acc: 16.01190476190476%
+[finished:1720] Acc: 16.1046511627907%
+[finished:1760] Acc: 16.193181818181817%
+[finished:1800] Acc: 16.055555555555557%
+[finished:1840] Acc: 16.08695652173913%
+[finished:1880] Acc: 15.957446808510639%
+[finished:1920] Acc: 16.041666666666668%
+[finished:1960] Acc: 15.918367346938775%
+[finished:2000] Acc: 16.05%
+[finished:2040] Acc: 15.980392156862743%
+[finished:2080] Acc: 15.913461538461537%
+[finished:2120] Acc: 15.80188679245283%
+[finished:2160] Acc: 15.694444444444445%
+[finished:2200] Acc: 15.545454545454545%
+[finished:2240] Acc: 15.446428571428573%
+[finished:2280] Acc: 15.394736842105264%
+[finished:2320] Acc: 15.301724137931034%
+[finished:2360] Acc: 15.296610169491526%
+[finished:2400] Acc: 15.5%
+[finished:2440] Acc: 15.532786885245903%
+[finished:2480] Acc: 15.685483870967742%
+[finished:2520] Acc: 15.753968253968253%
+[finished:2560] Acc: 15.78125%
+[finished:2600] Acc: 15.884615384615387%
+[finished:2640] Acc: 15.871212121212123%
+[finished:2680] Acc: 15.858208955223882%
+[finished:2720] Acc: 15.845588235294116%
+[finished:2760] Acc: 15.833333333333332%
+[finished:2800] Acc: 15.928571428571429%
+[finished:2840] Acc: 15.845070422535212%
+[finished:2880] Acc: 15.868055555555555%
+[finished:2920] Acc: 15.856164383561644%
+[finished:2960] Acc: 15.844594594594593%
+[finished:3000] Acc: 15.8%
+[finished:3040] Acc: 15.756578947368421%
+[finished:3080] Acc: 15.779220779220779%
+[finished:3120] Acc: 15.865384615384615%
+[finished:3160] Acc: 15.886075949367088%
+[finished:3200] Acc: 15.90625%
+[finished:3240] Acc: 15.864197530864196%
+[finished:3280] Acc: 15.792682926829269%
+[finished:3320] Acc: 15.783132530120481%
+[finished:3360] Acc: 15.833333333333332%
+[finished:3400] Acc: 15.823529411764707%
+[finished:3440] Acc: 15.813953488372093%
+[finished:3480] Acc: 15.89080459770115%
+[finished:3520] Acc: 15.937499999999998%
+[finished:3560] Acc: 16.01123595505618%
+[finished:3600] Acc: 16.0%
+[finished:3640] Acc: 15.989010989010987%
+[finished:3680] Acc: 16.005434782608695%
+[finished:3720] Acc: 15.887096774193548%
+[finished:3760] Acc: 15.851063829787234%
+[finished:3800] Acc: 15.894736842105264%
+[finished:3840] Acc: 16.015625%
+[finished:3880] Acc: 15.902061855670102%
+[finished:3920] Acc: 15.943877551020408%
+[finished:3960] Acc: 15.95959595959596%
+[finished:4000] Acc: 15.950000000000001%
+[finished:4040] Acc: 16.014851485148515%
+[finished:4080] Acc: 16.004901960784313%
+[finished:4120] Acc: 15.970873786407767%
+[finished:4160] Acc: 15.96153846153846%
+[finished:4200] Acc: 15.95238095238095%
+[finished:4240] Acc: 16.037735849056602%
+[finished:4280] Acc: 16.074766355140188%
+[finished:4320] Acc: 16.087962962962962%
+[finished:4360] Acc: 16.032110091743117%
+[finished:4400] Acc: 16.045454545454547%
+[finished:4440] Acc: 16.171171171171174%
+[finished:4480] Acc: 16.183035714285715%
+[finished:4520] Acc: 16.128318584070797%
+[finished:4560] Acc: 16.11842105263158%
+[finished:4600] Acc: 16.217391304347824%
+[finished:4640] Acc: 16.185344827586206%
+[finished:4680] Acc: 16.23931623931624%
+[finished:4720] Acc: 16.1864406779661%
+[finished:4760] Acc: 16.218487394957982%
+[finished:4800] Acc: 16.1875%
+[finished:4840] Acc: 16.136363636363637%
+[finished:4880] Acc: 16.12704918032787%
+[finished:4920] Acc: 16.056910569105693%
+[finished:4960] Acc: 15.987903225806452%
+[finished:5000] Acc: 15.959999999999999%
+[finished:5040] Acc: 16.03174603174603%
+[finished:5080] Acc: 15.94488188976378%
+[finished:5120] Acc: 15.87890625%
+[finished:5160] Acc: 15.833333333333332%
+[finished:5200] Acc: 15.807692307692308%
+[finished:5240] Acc: 15.820610687022901%
+[finished:5280] Acc: 15.833333333333332%
+[finished:5320] Acc: 15.86466165413534%
+[finished:5360] Acc: 15.82089552238806%
+[finished:5400] Acc: 15.833333333333332%
+[finished:5440] Acc: 15.808823529411764%
+[finished:5480] Acc: 15.766423357664234%
+[finished:5520] Acc: 15.742753623188404%
+[finished:5560] Acc: 15.79136690647482%
+[finished:5600] Acc: 15.785714285714286%
+[finished:5640] Acc: 15.74468085106383%
+[finished:5680] Acc: 15.792253521126762%
+[finished:5720] Acc: 15.734265734265735%
+[finished:5760] Acc: 15.694444444444445%
+[finished:5800] Acc: 15.689655172413794%
+[finished:5840] Acc: 15.667808219178081%
+[finished:5880] Acc: 15.714285714285714%
+[finished:5920] Acc: 15.72635135135135%
+[finished:5960] Acc: 15.671140939597317%
+[finished:6000] Acc: 15.716666666666669%
+[finished:6040] Acc: 15.778145695364238%
+[finished:6080] Acc: 15.723684210526315%
+[finished:6120] Acc: 15.718954248366012%
+[finished:6160] Acc: 15.698051948051948%
+[finished:6200] Acc: 15.661290322580646%
+[finished:6240] Acc: 15.689102564102564%
+[finished:6280] Acc: 15.780254777070063%
+[finished:6320] Acc: 15.854430379746837%
+[finished:6360] Acc: 15.880503144654087%
+[finished:6400] Acc: 15.890625%
+[finished:6440] Acc: 15.838509316770185%
+[finished:6480] Acc: 15.787037037037038%
+[finished:6520] Acc: 15.797546012269938%
+[finished:6560] Acc: 15.777439024390244%
+[finished:6600] Acc: 15.772727272727272%
+[finished:6640] Acc: 15.783132530120481%
+[finished:6680] Acc: 15.778443113772456%
+[finished:6720] Acc: 15.803571428571427%
+[finished:6760] Acc: 15.813609467455622%
+[finished:6800] Acc: 15.808823529411764%
+[finished:6840] Acc: 15.789473684210526%
+[finished:6880] Acc: 15.784883720930232%
+[finished:6920] Acc: 15.765895953757225%
+[finished:6960] Acc: 15.747126436781608%
+[finished:7000] Acc: 15.785714285714286%
+[finished:7040] Acc: 15.75284090909091%
+[finished:7080] Acc: 15.734463276836157%
+[finished:7120] Acc: 15.660112359550563%
+[finished:7160] Acc: 15.726256983240223%
+[finished:7200] Acc: 15.736111111111112%
+[finished:7240] Acc: 15.745856353591158%
+[finished:7280] Acc: 15.741758241758241%
+[finished:7320] Acc: 15.724043715846994%
+[finished:7360] Acc: 15.692934782608695%
+[finished:7400] Acc: 15.662162162162163%
+[finished:7440] Acc: 15.658602150537634%
+[finished:7480] Acc: 15.735294117647058%
+[finished:7520] Acc: 15.71808510638298%
+[finished:7560] Acc: 15.714285714285714%
+[finished:7600] Acc: 15.710526315789474%
+[finished:7640] Acc: 15.719895287958115%
+[finished:7680] Acc: 15.742187499999998%
+[finished:7720] Acc: 15.71243523316062%
+[finished:7760] Acc: 15.734536082474227%
+[finished:7800] Acc: 15.756410256410255%
+[finished:7840] Acc: 15.727040816326532%
+[finished:7880] Acc: 15.748730964467006%
+[finished:7920] Acc: 15.732323232323234%
+[finished:7960] Acc: 15.728643216080402%
+[finished:8000] Acc: 15.737499999999999%
+[finished:8040] Acc: 15.746268656716417%
+[finished:8080] Acc: 15.705445544554456%
+[finished:8120] Acc: 15.689655172413794%
+[finished:8160] Acc: 15.71078431372549%
+[finished:8200] Acc: 15.71951219512195%
+[finished:8240] Acc: 15.728155339805824%
+[finished:8280] Acc: 15.68840579710145%
+[finished:8320] Acc: 15.673076923076923%
+[finished:8360] Acc: 15.69377990430622%
+[finished:8400] Acc: 15.738095238095237%
+[finished:8440] Acc: 15.734597156398102%
+[finished:8480] Acc: 15.70754716981132%
+[finished:8520] Acc: 15.715962441314554%
+[finished:8560] Acc: 15.700934579439252%
+[finished:8600] Acc: 15.69767441860465%
+[finished:8640] Acc: 15.694444444444445%
+[finished:8680] Acc: 15.691244239631336%
+[finished:8720] Acc: 15.688073394495413%
+[finished:8760] Acc: 15.719178082191782%
+[finished:8800] Acc: 15.704545454545455%
+[finished:8840] Acc: 15.656108597285067%
+[finished:8880] Acc: 15.675675675675677%
+[finished:8920] Acc: 15.661434977578475%
+[finished:8960] Acc: 15.636160714285715%
+[finished:9000] Acc: 15.622222222222224%
+[finished:9040] Acc: 15.619469026548671%
+[finished:9080] Acc: 15.638766519823788%
+[finished:9120] Acc: 15.646929824561404%
+[finished:9160] Acc: 15.633187772925764%
+[finished:9200] Acc: 15.608695652173912%
+[finished:9240] Acc: 15.595238095238095%
+[finished:9280] Acc: 15.560344827586206%
+[finished:9320] Acc: 15.568669527896994%
+[finished:9360] Acc: 15.555555555555555%
+[finished:9400] Acc: 15.574468085106382%
+[finished:9440] Acc: 15.529661016949154%
+[finished:9480] Acc: 15.516877637130802%
+[finished:9520] Acc: 15.504201680672269%
+[finished:9560] Acc: 15.533472803347282%
+[finished:9600] Acc: 15.562500000000002%
+[finished:9640] Acc: 15.529045643153527%
+[finished:9680] Acc: 15.599173553719009%
+[finished:9720] Acc: 15.627572016460906%
+[finished:9760] Acc: 15.635245901639344%
+[finished:9800] Acc: 15.653061224489795%
+[finished:9840] Acc: 15.619918699186991%
+[finished:9880] Acc: 15.647773279352226%
+[finished:9920] Acc: 15.645161290322582%
+[finished:9960] Acc: 15.652610441767067%
+[finished:10000] Acc: 15.659999999999998%
+Validated on 10000 Images, Accuracy: 15.659999999999998%
+[tensor(4.1977, device='cuda:0', grad_fn=<DivBackward0>), tensor(3.8537, device='cuda:0', grad_fn=<DivBackward0>), tensor(3.7032, device='cuda:0', grad_fn=<DivBackward0>), tensor(3.6105, device='cuda:0', grad_fn=<DivBackward0>)]
+[5.94, 10.14, 12.726, 14.32]
+[7.23, 12.09, 14.24, 15.659999999999998]
+Saving:
+Checkpoint Saved to '../save/pretrain_cifar100/Max4acc_15.66.pth'
+
+Epoch5_start: Wed Oct 27 13:29:38 2021
